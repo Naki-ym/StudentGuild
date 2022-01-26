@@ -5,7 +5,7 @@
       <label>
         <%= link_to "/users/#{@current_user.id}/edit" do %>
           <i class="fas fa-user-cog"></i>
-          <p>ユーザーデータの編集</p>
+          <p>アカウント情報の編集</p>
         <% end %>
       </label>
     </li>
@@ -18,7 +18,7 @@
     <li>
       <%= link_to("/users/#{@current_user.id}/destroy", method: :post) do %>
         <i class="fas fa-user-slash"></i>
-        <p>ユーザーを削除</p>
+        <p>アカウントを削除</p>
       <% end %>
     </li>
     <li>
