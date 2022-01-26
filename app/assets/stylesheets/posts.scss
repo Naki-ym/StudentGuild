@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import "_variable";
+@import "_form";
+@import "_postlist";
+
+.tl-post-list {
+  margin: 0 auto;
+  width: 50%;
+  form {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px;
+    margin-bottom: 20px;
+    .newpost-text {
+      padding: 10px;
+      width: 100%;
+      font-size: 17px;
+      resize: none;
+      border: solid 2px c(line);
+      border-radius: 4px;
+      overflow: hidden;
+      &:focus {
+        outline: 0;
+        border: solid 2px #cfcfcf;
+      }
+    }
+    .newpost-items {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

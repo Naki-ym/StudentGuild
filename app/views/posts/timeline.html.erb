@@ -1,0 +1,28 @@
+<div class="tl-post-list">
+  <%= form_tag("/posts/create") do %>
+      <textarea class="newpost-text" rows="2"></textarea>
+      <div class="newpost-items">
+        <i class="far fa-image"></i>
+        <input type="submit" value="投稿" class="btn">
+      </div>
+  <% end %>
+
+  <div class="post-list">
+    <div class="post-box">
+      <div class="post-user-box">
+        <p>aaaaa</p>
+      </div>
+      <div class="post-content">
+        <p>aaaaa</p>
+      </div>
+      <div class="post-items">
+        <i class="fas fa-heart"></i>
+        <i class="far fa-heart"></i>
+        <i class="fas fa-share-alt"></i>
+        <i class="far fa-paper-plane"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'posts/timeline' %>

@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   get "users/:id/edit" => "users#edit"
   post "users/:id/update" => "users#update"
   post "users/:id/destroy" => "users#destroy"
+
+  get "timeline" => "posts#timeline"
+  get "posts/create" => "posts#timeline"
+  post "posts/create" => "posts#create"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
