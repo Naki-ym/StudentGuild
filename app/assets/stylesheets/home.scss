@@ -6,6 +6,7 @@
   background-image: url(federica-giusti-my6gx6s_Fr8-unsplash.jpg);
   background-size: cover;
   background-attachment: fixed;
+  user-select: none;
 }
 
 .vidual-area {
@@ -69,6 +70,7 @@
 
 .about {
   padding-top: 100px;
+  user-select: none;
 }
 
 .tab-box {
@@ -131,4 +133,5 @@
 
 .start {
   margin: 200px 0;
+  user-select: none;
 }

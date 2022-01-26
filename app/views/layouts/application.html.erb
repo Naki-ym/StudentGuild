@@ -23,9 +23,8 @@
     <nav class="pc-nav">
       <ul>
         <% if session[:user_id] %>
-          <li><%= link_to("TOP", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
-          <li><%= link_to("TimeLine", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
-          <li><%= link_to("Chat", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+          <li><%= link_to("TimeLine", "#", {class: "header-list-item"}) %></li>
+          <li><%= link_to("Chat", "#", {class: "header-list-item"}) %></li>
           <li><%= link_to("User", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
         <% else %>
           <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>
