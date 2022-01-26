@@ -1,9 +1,32 @@
 <div class="wrapper">
   <h1>設定</h1>
   <ul class="btn-list">
-    <li><%= link_to("ユーザーデータの編集", "/users/#{@current_user.id}/edit") %></li>
-    <li><%= link_to("ユーザーを削除", "/users/#{@current_user.id}/destroy", method: :post) %></li>
-    <li><%= link_to("ログアウト", "/logout", method: :post) %></li>
+    <li>
+      <label>
+        <%= link_to "/users/#{@current_user.id}/edit" do %>
+          <i class="fas fa-user-cog"></i>
+          <p>ユーザーデータの編集</p>
+        <% end %>
+      </label>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fas fa-key"></i>
+        <p>パスワードの変更</p>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to("/users/#{@current_user.id}/destroy", method: :post) do %>
+        <i class="fas fa-user-slash"></i>
+        <p>ユーザーを削除</p>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to("/logout", method: :post) do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <p>ログアウト</p>
+      <% end %>
+    </li>
   </ul>
   <div class="btns">
     <%= button_to "戻る", "javascript:history.back()", {method: :get, class: "btn"} %>

@@ -21,13 +21,6 @@
   font-family: 'Kosugi', sans-serif;
 }
 
-a {
-  transition: 0.3s;
-  &:hover {
-    opacity: 0.5;
-  }
-}
-
 .btns {
   margin: 0 auto;
   display: flex;
@@ -58,11 +51,24 @@ a {
   margin: 20px;
   li {
     line-height: 1.5;
-    padding: 5px;
+    padding: 20px;
     border-bottom: solid 1px silver;
     list-style-type: none!important;
+    font-weight: normal;
     &:last-of-type{
       border-bottom: none;
+    }
+    a {
+      display: flex;
+      transition: 0.3s ;
+      line-height: 100%;
+      font-size: 20px;
+      &:hover {
+        opacity: 0.5;
+      }
+      i {
+        padding-right: 20px;
+      }
     }
   }
 }

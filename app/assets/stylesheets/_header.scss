@@ -34,6 +34,10 @@ header {
         margin: 0 15px;
         padding: 0 10px;
         font-size: 23px;
+        transition: 0.3s;
+        &:hover {
+          opacity: 0.5;
+        }
         .header-list-item {
           color: c(main);
           position: relative;
