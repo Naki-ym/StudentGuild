@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudentGuild</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Shippori+Mincho&family=Kosugi&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <% if session[:user_id] %>
+      <%= link_to("Student Guild", "/users/#{@current_user.id}", {class: "header-logo"}) %>
+    <% else %>
+      <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
+    <% end %>
+    <nav class="pc-nav">
+      <ul>
+        <% if session[:user_id] %>
+          <li><%= link_to("TOP", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+          <li><%= link_to("TimeLine", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+          <li><%= link_to("Chat", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+          <li><%= link_to("User", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+        <% else %>
+          <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>
+          <li><%= link_to("Login", "/login", {class: "header-list-item"}) %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="under-header"></div>
+
+  <% if flash[:notice] %>
+    <div class="success-msg">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <% if flash[:error_message] %>
+    <div class="error-msg">
+      <%= flash[:error_message] %>
+    </div>
+  <% end %>
+  <% if @error_message %>
+    <div class="error-msg">
+      <%= @error_message %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</body>
+</html>

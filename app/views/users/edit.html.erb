@@ -1,0 +1,27 @@
+<% if @user.errors.full_messages %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="form-wrapper">
+  <h1>ユーザー情報の編集</h1>
+  <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+    <div class="form">
+      <div class="form-item">
+        <h2>ユーザー名</h2>
+        <input name="name" value="<%= @name%>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>メールアドレス</h2>
+        <input name="email" value="<%= @email%>" class="textbox">
+      </div>
+    </div>
+    <div class="btns">
+      <%= button_to "キャンセル", "javascript:history.back()", {method: :get, class: "btn"} %>
+      <input type="submit" value="保存" class="btn">
+    </div>
+  <% end %>
+</div>

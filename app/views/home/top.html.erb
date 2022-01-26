@@ -1,0 +1,54 @@
+<div class="vidual-bg">
+  <div class="vidual-area">
+    <div class="vidual-area-box">
+      <h1>クリエイティブを、仲間と。</h1>
+    </div>
+  </div>
+  <div class="vidual-article">
+    <div class="vidual-article-box">
+      <h2>学生だって忙しい。</h2>
+      <p>
+        勉強、部活、行事。やることは沢山ある。<br>
+        でもやりたいことがある。作りたいものがある。<br>
+        そんな時、ここで仲間を探してみよう。
+      </p>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="about">
+    <h2>特徴</h2>
+    <div class="tab-box">
+      <ul class="tab">
+        <li class="active"><a href="#timeline" class="link">タイムライン</a></li>
+        <li><a href="#chat" class="link">チャット</a></li>
+      </ul>
+      <div class="area">
+        <div id="timeline" class="area-content is-active">
+          <div class="area-texts">
+            <h3>タイムライン機能</h3>
+            <p>テキストテキストテキストテキストテキストテキストテキスト</p>
+          </div>
+          <%= embedded_svg("undraw_social_networking_re_i1ex.svg",alt: "ApplicationName logo") %>
+        </div>
+        <div id="chat" class="area-content">
+          <div class="area-texts">
+            <h3>チャット機能</h3>
+            <p>テキストテキストテキストテキストテキストテキストテキスト</p>
+          </div>
+          <%= embedded_svg("undraw_chatting_re_j55r.svg",alt: "ApplicationName logo") %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="start">
+    <h2>Let's start!</h2>
+    <div class="btns">
+      <%= button_to "新規登録", {controller: "users", action: 'signup'}, {method: :get, class: "btn"} %>
+      <%= button_to "ログイン", {controller: "users", action: 'login_form'}, {method: :get, class: "btn"} %>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'top-header' %>
+<%= javascript_pack_tag 'home/top' %>

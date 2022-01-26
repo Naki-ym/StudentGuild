@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+header {
+  background-color: c(header);
+  width: 100%;
+  padding: 10px 3% 5px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 999;
+  * {
+    font-family: 'Abel', sans-serif;
+    pointer-events: auto;
+  }
+  .header-logo {
+    font-size: 30px;
+    font-weight: normal;
+    color: c(main);
+    transition: 0.3s;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  ul {
+    margin: 0;
+  }
+  .pc-nav {
+    ul {
+      display: flex;
+      li {
+        margin: 0 15px;
+        padding: 0 10px;
+        font-size: 23px;
+        .header-list-item {
+          color: c(main);
+          position: relative;
+          &::after {
+            content: '';
+            /*絶対配置で線の位置を決める*/
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            /*線の形状*/
+            width: 120%;
+            height: 2px;
+            background: c(main);
+            opacity: 0.7;
+            /*アニメーションの指定*/
+            transition: all .3s;
+            transform: scale(0, 1);/*X方向0、Y方向1*/
+            transform-origin: center top;/*上部中央基点*/
+          }
+        }
+      }
+      .header-list-item:hover::after {
+        transform: scale(1, 1);/*X方向にスケール拡大*/
+      }
+    }
+  }
+}
+
+.top-header {
+  .header-logo {
+    color: c(sub);
+  }
+  .headerColorScroll {
+    color: c(main);
+  }
+  .pc-nav {
+    ul {
+      li {
+        .header-list-item {
+          color: c(sub);
+          &::after {
+            /*線の形状*/
+            background: c(sub);
+          }
+        }
+        .headerColorScroll {
+          color: c(main);
+            &::after {
+            content: '';
+            background: c(main);
+          }
+        }
+      }
+    }
+  }
+}

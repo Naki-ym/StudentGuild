@@ -1,0 +1,30 @@
+<% if @user.errors.full_messages %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="form-wrapper">
+  <h1>新規登録</h1>
+  <%= form_tag("/signup") do %>
+    <div class="form">
+      <div class="form-item">
+        <h2>ユーザー名</h2>
+        <input name="name" value="<%= @user.name %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>メールアドレス</h2>
+        <input name="email" value="<%= @user.email %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>パスワード</h2>
+        <input name="password" type="password" class="textbox">
+      </div>
+    </div>
+    <div class="btns">
+      <input type="submit" value="新規登録" class="btn">
+    </div>
+  <% end %>
+</div>

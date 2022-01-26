@@ -1,0 +1,29 @@
+.form-wrapper {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 0;
+  text-align: center;
+}
+
+.form {
+  padding: 20px;
+  margin-top: 20px;
+  text-align: left;
+  .form-item {
+    margin-bottom: 30px;
+    h2 {  
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+    .textbox {
+      resize: vertical;
+      padding: 10px;
+      font-size: 15px;
+      width: 100%;
+      outline: none;
+      border: none;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@charset "utf-8";
+$colors: (
+  main: #000,
+  sub: rgb(255, 255, 255),
+  accent: rgb(150, 150, 150),
+  header: rgba(0, 0, 0, 0)
+);
+@function c($color) { 
+  @return #{map-get($colors, $color)}
+}
