@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <h1>設定</h1>
+  <ul class="btn-list">
+    <li><%= link_to("ユーザーデータの編集", "/users/#{@current_user.id}/edit") %></li>
+    <li><%= link_to("ユーザーを削除", "/users/#{@current_user.id}/destroy", method: :post) %></li>
+    <li><%= link_to("ログアウト", "/logout", method: :post) %></li>
+  </ul>
+  <div class="btns">
+    <%= button_to "戻る", "javascript:history.back()", {method: :get, class: "btn"} %>
+  </div>
+</div>

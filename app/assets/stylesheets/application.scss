@@ -51,6 +51,22 @@ a {
   }
 }
 
+.btn-list {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  position: relative;
+  padding: 0 20px;
+  margin: 20px;
+  li {
+    line-height: 1.5;
+    padding: 5px;
+    border-bottom: solid 1px silver;
+    list-style-type: none!important;
+    &:last-of-type{
+      border-bottom: none;
+    }
+  }
+}
+
 img {
   width: 100%;
 }

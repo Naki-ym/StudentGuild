@@ -1,13 +1,9 @@
 <div class="wrapper">
   <h1><%= @user.name %></h1>
-
-  <% if @user.id == @current_user.id %>
-    <p><%= @user.email %></p>
-    <%= link_to("ユーザーデータの編集", "/users/#{@current_user.id}/edit", class: "btn") %>
-    <%= link_to("ユーザーを削除", "/users/#{@current_user.id}/destroy", method: :post, class: "btn") %>
-    <%= button_to "ログアウト", {controller: 'users', action: 'logout'}, {method: :post, class: "btn"} %>
-    <%= button_to "戻る", "javascript:history.back()", {method: :get, class: "btn"} %>
-  <% else %>
-    <%= button_to "戻る", "javascript:history.back()", {method: :get, class: "btn"} %>
-  <% end %>
+  <div class="user-btnarea">
+    <% if @user.id == @current_user.id %>
+      <%= link_to("ユーザーデータの編集", "/users/#{@current_user.id}/edit", class: "btn") %>
+      <%= link_to("", "/settings", class: "icon fas fa-cog") %>
+    <% end %>
+  </div>
 </div>

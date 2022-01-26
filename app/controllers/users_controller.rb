@@ -68,4 +68,6 @@ class UsersController < ApplicationController
       render("users/#{@user.id}")
     end
   end
+  def settings
+  end
 end

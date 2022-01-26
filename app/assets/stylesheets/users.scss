@@ -1,3 +1,15 @@
 @charset "utf-8";
 @import "_variable";
 @import "_form";
+
+.user-btnarea {
+  display: flex;
+  justify-content: flex-end;
+  vertical-align: middle;
+  .icon {
+    display: inline;
+    font-size: 25px;
+    margin: 10px;
+    padding: 5px 10px;
+  }
+}
