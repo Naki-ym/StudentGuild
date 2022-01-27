@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     @current_user = User.find_by(id: session[:user_id])
     @user = User.new
+    @post = Post.new
   end
 
   def authenticate_user

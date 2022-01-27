@@ -1,0 +1,25 @@
+<div class="show-post-wrapper">
+  <div class="post-list">
+    <div class="post-box">
+      <div class="post-user-box">
+        <p><%= @post.user_id %></p>
+      </div>
+      <div class="post-content">
+        <p><%= @post.content %></p>
+      </div>
+      <div class="post-items">
+        <i class="fas fa-heart"></i>
+        <i class="far fa-heart"></i>
+        <i class="fas fa-share-alt"></i>
+        <% if @post.user_id == @current_user.id %>
+          <%= link_to("/posts/#{@post.id}/edit") do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to("/posts/#{@post.id}/delete", method: :post) do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

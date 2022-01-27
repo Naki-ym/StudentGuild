@@ -58,6 +58,11 @@ class UsersController < ApplicationController
   end
   def delete
     @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: @user.id)
+    @posts.each do |post|
+      post.delete_flg = true
+      post.save
+    end
     @user.delete_flg = true
     if @user.save
       session[:user_id] = nil

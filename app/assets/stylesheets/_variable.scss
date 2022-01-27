@@ -4,7 +4,7 @@ $colors: (
   sub: rgb(255, 255, 255),
   accent: rgb(150, 150, 150),
   header: rgba(0, 0, 0, 0),
-  line: #e1e3e8
+  line: #eceef3
 );
 @function c($color) { 
   @return #{map-get($colors, $color)}
