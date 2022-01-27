@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "users/:id" => "users#show"
   get "users/:id/edit" => "users#edit"
   post "users/:id/update" => "users#update"
-  post "users/:id/destroy" => "users#destroy"
+  post "users/:id/delete" => "users#delete"
 
   get "timeline" => "posts#timeline"
   get "posts/create" => "posts#timeline"

@@ -56,7 +56,7 @@ class UsersController < ApplicationController
       render("users/edit")
     end
   end
-  def destroy
+  def delete
     @user = User.find_by(id: params[:id])
     @user.delete_flg = true
     if @user.save

@@ -16,7 +16,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to("/users/#{@current_user.id}/destroy", method: :post) do %>
+      <%= link_to("/users/#{@current_user.id}/delete", method: :post) do %>
         <i class="fas fa-user-slash"></i>
         <p>アカウントを削除</p>
       <% end %>
