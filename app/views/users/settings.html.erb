@@ -15,13 +15,13 @@
         <p>パスワードの変更</p>
       <% end %>
     </li>
-    <li>
+    <li class="redtext">
       <%= link_to("/users/#{@current_user.id}/delete", method: :post) do %>
         <i class="fas fa-user-slash"></i>
         <p>アカウントを削除</p>
       <% end %>
     </li>
-    <li>
+    <li class="redtext">
       <%= link_to("/logout", method: :post) do %>
         <i class="fas fa-sign-out-alt"></i>
         <p>ログアウト</p>

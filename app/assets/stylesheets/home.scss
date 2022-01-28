@@ -68,7 +68,15 @@
   }
 }
 
+.top-wrapper {
+  width: 90%;
+  max-width: 1190px;
+  margin: 0 auto 0;
+  text-align: center;
+}
+
 .about {
+  text-align: left;
   padding-top: 100px;
   user-select: none;
 }

@@ -16,7 +16,7 @@
 <body>
   <header>
     <% if session[:user_id] %>
-      <%= link_to("Student Guild", "/users/#{@current_user.id}", {class: "header-logo"}) %>
+      <%= link_to("Student Guild", "/timeline", {class: "header-logo"}) %>
     <% else %>
       <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
     <% end %>
@@ -54,5 +54,7 @@
   <% end %>
 
   <%= yield %>
+
+  <%= javascript_pack_tag 'modalmenu' %>
 </body>
 </html>

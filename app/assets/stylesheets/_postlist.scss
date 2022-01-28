@@ -5,10 +5,17 @@
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 10px 20px 5px;
-    .post-user-box {
+    .post-top {
       display: flex;
-      font-size: 20px;
+      justify-content: space-between;
       padding-bottom: 10px;
+      font-size: 20px;
+      .post-user-box {
+        display: flex;
+      }
+      i {
+        font-size: 18px
+      }
     }
     .post-content {
       width: 100%;
@@ -20,7 +27,8 @@
       user-select: none;
       i {
         font-size: 20px;
-        transition: 0.3s ;
+        transition: 0.3s;
+        padding: 10px;
         &:hover {
           opacity: 0.5;
         }
