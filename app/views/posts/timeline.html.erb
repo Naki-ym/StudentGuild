@@ -20,14 +20,16 @@
       <div class="post-box">
         <div class="post-top">
           <div class="post-user-box">
-            <p><%= post.user.name %></p>
+            <%= link_to("/users/#{post.user.id}") do %>
+              <p><%= post.user.name %></p>
+            <% end %>
           </div>
           <a href="" class="md-btn" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>
         </div>
         <div id="modal<%= post.id %>" class="modal">
           <div class="md-overlay md-close"></div>
           <div class="md-contents">
-            <ul class="md-list">  
+            <ul class="md-list">
               <% if post.user_id == @current_user.id %>
                 <li>
                   <%= link_to("/posts/#{post.id}/edit") do %>

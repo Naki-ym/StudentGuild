@@ -3,7 +3,9 @@
     <div class="post-box">
       <div class="post-top">
         <div class="post-user-box">
-          <p><%= @post.user.name %></p>
+          <%= link_to("/users/#{@post.user.id}") do %>
+            <p><%= @post.user.name %></p>
+          <% end %>
         </div>
         <a href="" class="md-btn" data-target="modal<%= @post.id %>"><i class="fas fa-ellipsis-v"></i></a>
       </div>
