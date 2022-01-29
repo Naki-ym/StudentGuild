@@ -46,10 +46,8 @@
       <div class="post-content">
         <p><%= @post.content %></p>
       </div>
-      <div class="post-items">
-        <i class="fas fa-heart"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-share-alt"></i>
+      <div class="post-items" id="favorite_<%= @post.id %>">
+        <%= render 'posts/post_items', post: @post %>
       </div>
     </div>
   </div>

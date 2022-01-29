@@ -20,5 +20,8 @@ Rails.application.routes.draw do
   post "posts/create" => "posts#create"
   post "posts/:id/update" => "posts#update"
   post "posts/:id/delete" => "posts#delete"
+
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  post 'favorite/:id/delete' => 'favorites#delete', as: 'delete_favorite'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
