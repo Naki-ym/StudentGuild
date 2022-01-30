@@ -6,9 +6,9 @@ class Post < ApplicationRecord
   has_many :favorites
 
   def user
-    return User.find_by(id: self.user_id, delete_flg: false)
+    return User.find_by(id: self.user_id, is_deleted: false)
   end
   def favorites
-    return Favorite.where(post_id: self.id, delete_flg: false)
+    return Favorite.where(post_id: self.id, is_deleted: false)
   end
 end

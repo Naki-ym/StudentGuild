@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_29_054728) do
+ActiveRecord::Schema.define(version: 2022_01_30_133224) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
-    t.boolean "delete_flg", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_favorites_on_post_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_01_29_054728) do
   create_table "posts", force: :cascade do |t|
     t.string "content", null: false
     t.integer "user_id", null: false
-    t.boolean "delete_flg", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_01_29_054728) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.boolean "delete_flg", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

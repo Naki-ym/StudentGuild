@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def login_form
   end
   def login
-    @user = User.find_by(email: params[:email], delete_flg: false)
+    @user = User.find_by(email: params[:email], is_deleted: false)
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find_by(id: params[:id])
-    @posts = Post.where(user_id: @user.id, delete_flg: false)
+    @posts = Post.where(user_id: @user.id, is_deleted: false)
   end
   def edit
     @user = User.find_by(id: params[:id])
@@ -61,10 +61,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @posts = Post.where(user_id: @user.id)
     @posts.each do |post|
-      post.delete_flg = true
+      post.is_deleted = true
       post.save
     end
-    @user.delete_flg = true
+    @user.is_deleted = true
     if @user.save
       session[:user_id] = nil
       flash[:notice] = "ユーザーを削除しました"
