@@ -60,7 +60,17 @@ class UsersController < ApplicationController
   def delete
     @user = User.find_by(id: params[:id])
     @posts = Post.where(user_id: @user.id)
+    @favorites = Favorite.where(user_id: @user.id)
+    @favorites.each do |favorite|
+      favorite.is_deleted = true
+      favorite.save
+    end
     @posts.each do |post|
+      @favorites = Favorite.where(post_id: post.id)
+      @favorites.each do |favorite|
+        favorite.is_deleted = true
+        favorite.save
+      end
       post.is_deleted = true
       post.save
     end

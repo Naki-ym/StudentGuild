@@ -34,6 +34,11 @@ class PostsController < ApplicationController
   end
   def delete
     @post = Post.find_by(id: params[:id])
+    @favorites = Favorite.where(post_id: @post.id)
+    @favorites.each do |favorite|
+      favorite.is_deleted = true
+      favorite.save
+    end
     @post.is_deleted = true
     if @post.save
       flash[:notice] = "投稿を削除しました"
