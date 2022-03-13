@@ -14,7 +14,7 @@ body {
     flex: 1;
     margin: 0 10px 15px;
     padding: 10px;
-    overflow: auto;
+    overflow: auto; 
     ul {
       border-bottom: solid 1px silver;
       padding: 15px;
@@ -51,7 +51,7 @@ body {
       padding: 10px;
       display: flex;
       .border {
-        padding: 10px 0 10px 10px;
+        padding: 10px 3px 10px 10px;
         width: 100%;
         border: solid 2px c(line);
         border-radius: 15px;
@@ -61,10 +61,6 @@ body {
           resize: none;
           overflow: hidden;
           border: none;
-          // &:focus {
-          //   outline: 0;
-          //   border: solid 2px #cfcfcf;
-          // }
           &:focus {
             outline: none;
             border: none;
@@ -72,6 +68,18 @@ body {
         }
         .ok-scroll {
           overflow-y: scroll;
+        }
+      }
+      .box-focus {
+        border: solid 2px #cfcfcf;
+      }
+      i {
+        margin-top: auto;
+        font-size: 20px;
+        transition: 0.3s;
+        padding: 10px 5px 15px 10px;
+        &:hover {
+          opacity: 0.5;
         }
       }
     }

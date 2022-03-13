@@ -19,3 +19,11 @@ $(document).on("input", '.new-msg', e => {
       }
     }
 });
+
+$(".new-msg")
+  .focusin(function(e) {
+    $(".border").addClass("box-focus");
+  })
+  .focusout(function(e) {
+    $(".border").removeClass("box-focus");
+  });
