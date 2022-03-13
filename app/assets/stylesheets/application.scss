@@ -21,6 +21,18 @@
   font-family: 'Kosugi', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  opacity: 0;
+  width: 20px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #cfcfcf;
+}
+
 .btns {
   margin: 0 auto;
   display: flex;

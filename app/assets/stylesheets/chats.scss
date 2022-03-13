@@ -14,7 +14,6 @@ body {
     flex: 1;
     margin: 0 10px 15px;
     padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     overflow: auto;
     ul {
       border-bottom: solid 1px silver;
@@ -35,7 +34,46 @@ body {
   .talk-room {
     flex: 2;
     margin: 0 10px 15px;
-    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .chat-box {
+      width: 100%;
+      flex-grow: 1;
+      padding: 10px;
+      border-bottom: solid 2px rgb(228, 228, 228);
+    }
+    .text-box {
+      width: 100%;
+      margin-top: auto;
+      height: auto;
+      padding: 10px;
+      display: flex;
+      .border {
+        padding: 10px 0 10px 10px;
+        width: 100%;
+        border: solid 2px c(line);
+        border-radius: 15px;
+        .new-msg {
+          width: 100%;
+          font-size: 17px;
+          resize: none;
+          overflow: hidden;
+          border: none;
+          // &:focus {
+          //   outline: 0;
+          //   border: solid 2px #cfcfcf;
+          // }
+          &:focus {
+            outline: none;
+            border: none;
+          }
+        }
+        .ok-scroll {
+          overflow-y: scroll;
+        }
+      }
+    }
   }
 }
