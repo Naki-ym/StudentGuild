@@ -1,17 +1,4 @@
 @charset "utf-8";
-$colors: (
-  main: #262626,
-  sub: #3f3f3f,
-  accent: #1ee3cf,
-  header: rgba(0, 0, 0, 0),
-  line: #0d3f67
-);
-
-@function c($color) { 
-  @return #{map-get($colors, $color)}
-}
-
-
 // ベースカラー
 $base-color-400: #262626;
 $base-color-300: #3f3f3f;
