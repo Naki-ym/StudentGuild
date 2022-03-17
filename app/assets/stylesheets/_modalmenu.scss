@@ -1,3 +1,6 @@
+@charset "utf-8";
+@import "_variable";
+
 .md-btn {
   transition: 0.3s ;
   &:hover {
@@ -25,7 +28,8 @@
   transform: translate(-50%, -50%);
   width:  max-content;
   height: auto;
-  background: #fff;
+  background-color: $base-color-100;
+  color: $base-color-400;
   border-radius: 5px;
   z-index: 10000;
   padding: 10px 20px;
@@ -33,7 +37,7 @@
   .md-list {
     li {
       padding: 20px 10px;
-      border-bottom: solid 1px silver;
+      border-bottom: solid 1px $accent-color-line;
       a {
         display: flex;
         font-size: 20px;

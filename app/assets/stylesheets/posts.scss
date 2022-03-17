@@ -16,12 +16,12 @@
       width: 100%;
       font-size: 17px;
       resize: none;
-      border: solid 2px c(line);
+      border: solid 2px $accent-color-line;
       border-radius: 5px;
       overflow: hidden;
       &:focus {
         outline: 0;
-        border: solid 2px #cfcfcf;
+        border: solid 2px $accent-color-line-active;
       }
     }
     .newpost-items {

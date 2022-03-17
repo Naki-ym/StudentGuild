@@ -1,10 +1,13 @@
+@charset "utf-8";
+@import "_variable";
+
 .success-msg {
   width: 50vw;
   margin: 0 auto;
   margin-bottom: 10px;
   padding: 10px;
-  color: white;
-  background-color: rgb(0, 140, 255);
+  color: $accent-color-success;
+  background-color: $accent-bg-color-success;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
   user-select: none;
 }
@@ -14,8 +17,8 @@
   margin: 0 auto;
   margin-bottom: 10px;
   padding: 10px;
-  color: white;
-  background-color: rgb(255, 75, 75);
+  color: $accent-color-danger;
+  background-color: $accent-bg-color-danger;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
   user-select: none;
 }

@@ -1,3 +1,6 @@
+@charset "utf-8";
+@import "_variable";
+
 .form-wrapper {
   width: 90%;
   max-width: 500px;
@@ -25,6 +28,7 @@
       outline: none;
       border: none;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+      background-color: $base-color-100;
     }
   }
 }

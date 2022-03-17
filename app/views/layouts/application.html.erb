@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Shippori+Mincho&family=Kosugi&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/d5d7b2c04e.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class='<%= controller.controller_name %>'>
   <header>
     <% if session[:user_id] %>
       <%= link_to("Student Guild", "/timeline", {class: "header-logo"}) %>

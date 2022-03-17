@@ -21,8 +21,7 @@
   h1 {
     padding: 10px 20px;
     width: fit-content;
-    color: c(main);
-    background-color: c(sub);
+    background-color: $base-color-100;
     font-size: 35px;
   }
 }
@@ -37,7 +36,7 @@
   width: 85%;
   margin: 50px 0 300px;
   padding: 20px;
-  background-color: c(sub);
+  background-color: $base-color-400;
   text-align: center;
   visibility: hidden;
   * {
@@ -90,24 +89,23 @@
   flex-wrap: wrap;
   li {
     display: block;
-    background: c(accent);
+    background: $main-bg-color;
     margin: 0 2px;
     padding: 10px 20px;
     border-radius: 5px 5px 0 0;
     a {
-      color: c(sub);
       transition: 0.3s;
       &:hover {
         opacity: 0.5;
       }
     }
     &.active {
-      background-color: c(main);
+      color: $base-color-100;
+      background-color: $main-color;
     }
   }
 }
 .area {
-  background: #fff;
   padding: 50px 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

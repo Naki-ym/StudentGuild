@@ -19,18 +19,22 @@
 @import "_variable";
 * {
   font-family: 'Kosugi', sans-serif;
+  color: $base-color-400;
+}
+
+body {
+  background-color: $base-color-100;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  opacity: 0;
-  width: 20px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  background-color: #cfcfcf;
+  border-radius: 10px;
+  background-color: $main-color;
 }
 
 .btns {
@@ -41,19 +45,19 @@
 
 .btn {
   display: block;
-  color: c(main);
+  color: $base-color-400;
   margin: 10px;
   padding: 5px 10px;
   width: fit-content;
-  border: 3px solid c(main);
+  border: 3px solid $base-color-400;
   font-size: 20px;
-  background: c(sub);
+  background: $base-color-100;
   transition: 0.5s ;
   user-select: none;
   &:hover {
     opacity: 1;
-    color: c(sub);
-    background: c(main);
+    color: $base-color-100;
+    background: $base-color-400;
   }
 }
 
@@ -66,7 +70,7 @@
   li {
     line-height: 1.5;
     padding: 20px;
-    border-bottom: solid 1px silver;
+    border-bottom: solid 1px $accent-color-line;
     list-style-type: none!important;
     font-weight: normal;
     &:last-of-type{
@@ -103,7 +107,7 @@ img {
 }
 
 .redtext {
-  color: red;
+  color: $accent-color-danger;
 }
 
 @import "_header";

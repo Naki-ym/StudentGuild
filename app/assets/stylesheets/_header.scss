@@ -1,5 +1,8 @@
+@charset "utf-8";
+@import "_variable";
+
 header {
-  background-color: c(header);
+  background-color: $accent-color-header;
   width: 100%;
   padding: 10px 3% 5px;
   position: fixed;
@@ -17,7 +20,7 @@ header {
   .header-logo {
     font-size: 30px;
     font-weight: normal;
-    color: c(main);
+    color: $base-color-400;
     transition: 0.3s;
     &:hover {
       opacity: 0.5;
@@ -38,7 +41,7 @@ header {
           opacity: 0.5;
         }
         .header-list-item {
-          color: c(main);
+          color: $base-color-400;
           position: relative;
           &::after {
             content: '';
@@ -49,7 +52,7 @@ header {
             /*線の形状*/
             width: 120%;
             height: 2px;
-            background: c(main);
+            background: $base-color-400;
             opacity: 0.7;
             /*アニメーションの指定*/
             transition: all .3s;
@@ -67,26 +70,26 @@ header {
 
 .top-header {
   .header-logo {
-    color: c(sub);
+    color: $base-color-100;
   }
   .headerColorScroll {
-    color: c(main);
+    color: $base-color-400;
   }
   .pc-nav {
     ul {
       li {
         .header-list-item {
-          color: c(sub);
+          color: $base-color-100;
           &::after {
             /*線の形状*/
-            background: c(sub);
+            background: $base-color-100;
           }
         }
         .headerColorScroll {
-          color: c(main);
+          color: $base-color-400;
             &::after {
             content: '';
-            background: c(main);
+            background: $base-color-400;
           }
         }
       }
