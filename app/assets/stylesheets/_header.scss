@@ -4,7 +4,7 @@
 header {
   background-color: $accent-color-header;
   width: 100%;
-  padding: 10px 3% 5px;
+  padding: 12px 3% 4px;
   position: fixed;
   top: 0;
   display: flex;
@@ -18,7 +18,7 @@ header {
     pointer-events: auto;
   }
   .header-logo {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: normal;
     color: $base-color-400;
     transition: 0.3s;
@@ -33,9 +33,9 @@ header {
     ul {
       display: flex;
       li {
-        margin: 0 15px;
-        padding: 0 10px;
-        font-size: 23px;
+        margin: 0 16px;
+        padding: 0 12px;
+        font-size: 24px;
         transition: 0.3s;
         &:hover {
           opacity: 0.5;
@@ -51,7 +51,7 @@ header {
             left: -10%;
             /*線の形状*/
             width: 120%;
-            height: 2px;
+            height: 1px;
             background: $base-color-400;
             opacity: 0.7;
             /*アニメーションの指定*/

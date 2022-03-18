@@ -28,8 +28,8 @@
                       <p>投稿内容の編集</p>
                     <% end %>
                   </li>
-                  <li class="redtext">
-                    <%= link_to("/posts/#{post.id}/delete", method: :post) do %>
+                  <li>
+                    <%= link_to("/posts/#{post.id}/delete",  {class: "redtext"}, method: :post) do %>
                       <i class="far fa-trash-alt"></i>
                       <p>この投稿を削除</p>
                     <% end %>

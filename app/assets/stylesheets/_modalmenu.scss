@@ -30,19 +30,23 @@
   height: auto;
   background-color: $base-color-100;
   color: $base-color-400;
-  border-radius: 5px;
+  border-radius: 4px;
   z-index: 10000;
-  padding: 10px 20px;
+  padding: 12px 20px;
   user-select: none;
   .md-list {
     li {
-      padding: 20px 10px;
+      padding: 20px 12px;
       border-bottom: solid 1px $accent-color-line;
       a {
         display: flex;
         font-size: 20px;
+        transition: 0.3s;
         i {
-          padding-right: 10px;
+          padding-right: 12 px;
+        }
+        &:hover {
+          opacity: 0.5;
         }
       }
       &:last-child {

@@ -35,7 +35,8 @@
   .talk-room {
     flex: 2;
     margin: 0 10px 15px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: 1px solid $accent-color-line;
+    background: white;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -43,27 +44,27 @@
       width: 100%;
       flex-grow: 1;
       padding: 10px;
-      border-bottom: solid 2px rgb(228, 228, 228);
+      border-bottom: solid 2px $accent-color-line;
       display: flex;
       flex-direction: column;
       .partner-msg {
         .text-msg {
           position: relative;
           display: inline-block;
-          margin: 1.5em 0 1.5em 15px;
-          padding: 7px 10px;
+          margin: 1.5em 0 1.5em 16px;
+          padding: 8px 12px;
           min-width: 120px;
           max-width: 100%;
           font-size: 16px;
-          background: #e0edff;
+          background: $accent-color-line;
           &:before {
             content: "";
             position: absolute;
             top: 50%;
-            left: -15px;
-            margin-top: -10px;
-            border: 7px solid transparent;
-            border-right: 10px solid #e0edff;
+            left: -16px;
+            margin-top: -12px;
+            border: 8px solid transparent;
+            border-right: 12px solid $accent-color-line;
           }
         }
       }
@@ -72,19 +73,19 @@
           position: relative;
           display: inline-block;
           margin: 1.5em 0 1.5em 15px;
-          padding: 7px 10px;
+          padding: 8px 12px;
           min-width: 120px;
           max-width: 100%;
           font-size: 16px;
-          background: #e0edff;
+          background: $accent-color-line;
           &:before {
             content: "";
             position: absolute;
             top: 50%;
-            left: -15px;
-            margin-top: -10px;
-            border: 7px solid transparent;
-            border-right: 10px solid #e0edff;
+            left: -16px;
+            margin-top: -12px;
+            border: 8px solid transparent;
+            border-right: 12px solid $accent-color-line;
           }
         }
       }
@@ -93,16 +94,16 @@
       width: 100%;
       margin-top: auto;
       height: auto;
-      padding: 10px;
+      padding: 12px;
       display: flex;
       .border {
-        padding: 10px 3px 10px 10px;
+        padding: 12px 4px 12px 12px;
         width: 100%;
-        border: solid 2px c(line);
-        border-radius: 15px;
+        border: solid 2px $accent-color-line;
+        border-radius: 16px;
         .new-msg {
           width: 100%;
-          font-size: 17px;
+          font-size: 16px;
           resize: none;
           overflow: hidden;
           border: none;
@@ -116,13 +117,13 @@
         }
       }
       .box-focus {
-        border: solid 2px #cfcfcf;
+        border: solid 2px $accent-color-line-active;
       }
       i {
         margin-top: auto;
         font-size: 20px;
         transition: 0.3s;
-        padding: 10px 5px 15px 10px;
+        padding: 12px 4px 16px 12px;
         &:hover {
           opacity: 0.5;
         }
