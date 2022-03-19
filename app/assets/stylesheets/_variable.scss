@@ -1,21 +1,24 @@
 @charset "utf-8";
-// ベースカラー
-$base-color-400: #262626;
-$base-color-300: #3f3f3f;
-$base-color-200: #dcdcdc;
-$base-color-100: #f5f5f5;
 
-// メインカラー
-$main-color: #6b48ff;
-$main-bg-color: #cabeff;
+// Colors
+  // BaseColor
+  $base-color-400: #262626;
+  $base-color-300: #3f3f3f;
+  $base-color-200: #dcdcdc;
+  $base-color-100: #f5f5f5;
 
-// アクセントカラー
-$accent-color-success: #4cdb8f;
-$accent-bg-color-success: #dbf7e8;
-$accent-color-danger: #E7475E;
-$accent-bg-color-danger: #fae4e9;
-$accent-color-attention: #F0D879;
-$accent-bg-color-attention: #ffffe8;
-$accent-color-line: #dcdcdc;
-$accent-color-line-active: #666666;
-$accent-color-header: rgba(0, 0, 0, 0);
+  // MainColor
+  $main-color: #6b48ff;
+  $main-bg-color: #cabeff;
+
+  // AccentColor
+  $accent-color-success: #4cdb8f;
+  $accent-bg-color-success: #dbf7e8;
+  $accent-color-danger: #E7475E;
+  $accent-bg-color-danger: #fae4e9;
+  $accent-color-attention: #F0D879;
+  $accent-bg-color-attention: #ffffe8;
+  $accent-color-line: #dcdcdc;
+  $accent-color-line-active: #666666;
+  $accent-color-header: rgba(0, 0, 0, 0);
+  $accent-color-createive: #24dce2;

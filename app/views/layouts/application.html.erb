@@ -35,7 +35,9 @@
     </nav>
   </header>
 
-  <div class="under-header"></div>
+  <% if controller.controller_name != "home" %>
+    <div class="under-header"></div>
+  <% end %>
 
   <% if flash[:notice] %>
     <div class="success-msg">

@@ -1,143 +1,47 @@
 @charset "utf-8";
 @import "_variable";
+@import "_bgextendlr";
 
-.vidual-bg {
-  background: center;
-  background-image: url(federica-giusti-my6gx6s_Fr8-unsplash.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  user-select: none;
-}
-
-.vidual-area {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.vidual-area-box {
-  width: 85%;
-  margin: 0 auto;
-  h1 {
-    padding: 12px 20px;
-    width: fit-content;
-    background-color: $base-color-100;
-    font-size: 36px;
+.fixed-box-wrapper{
+  position: relative;
+  z-index: 1;
+  .fixed-box{
+    position: -webkit-sticky;/*Safari*/
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    font-size: 100px;
+    background-color: white;
   }
-}
-
-.vidual-article {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.vidual-article-box {
-  width: 85%;
-  margin: 52px 0 300px;
-  padding: 20px;
-  background-color: $base-color-400;
-  text-align: center;
-  visibility: hidden;
-  * {
-    font-family: 'Shippori Mincho', serif;
-  }
-  h2 {
-    font-size: 32px;
-  }
-  p {
-    font-size: 20px;
-  }
-}
-
-.fadeIn{
-  animation-name: fadeInAnime;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  opacity: 0;
-  visibility: visible;
-}
-@keyframes fadeInAnime{
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.top-wrapper {
-  width: 90%;
-  max-width: 1190px;
-  margin: 0 auto 0;
-  text-align: center;
-}
-
-.about {
-  text-align: left;
-  padding-top: 100px;
-  user-select: none;
-}
-
-.tab-box {
-  margin: 32px 0 72px;
-}
-.tab{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  li {
-    display: block;
-    background: $main-bg-color;
-    margin: 0 2px;
-    padding: 12px 20px;
-    border-radius: 5px 5px 0 0;
-    a {
-      transition: 0.3s;
-      &:hover {
-        opacity: 0.5;
+  .box1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    .box1-content {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      h1 {
+        vertical-align: middle;
+        z-index: 1;
+        .bgyellow {
+          transition: 0.3s;
+          &:hover {
+            color: $accent-color-createive;
+          }
+        }
+      }
+      img {
+        position: absolute;
+        right: 20px;
+        width: 50%;
       }
     }
-    &.active {
-      color: $base-color-100;
-      background-color: $main-color;
-    }
   }
 }
-.area {
-  padding: 50px 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-.area-content {
-  display: none;/*はじめは非表示*/
-  opacity: 0;/*透過0*/
-  &.is-active {
-    display: flex;/*表示*/
-    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-  }
-  .area-texts {
-    width: 50%;
-    padding: 0 20px;
-  }
-  svg {
-    width: 50%;
-    padding: 10px;
-    max-height: 300px;
-  }
-}
-@keyframes displayAnime{
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.start {
-  margin: 200px 0;
-  user-select: none;
+footer{
+  position: relative;
+  z-index: 2;
+  height: 100px;
 }
