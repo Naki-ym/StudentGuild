@@ -1,11 +1,11 @@
 <div class="wrapper">
   <h1><%= @user.name %></h1>
-  <div class="user-btnarea">
+  <section class="user-btnarea">
     <% if @user.id == @current_user.id %>
       <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
       <%= link_to("", "/settings", class: "icon fas fa-cog") %>
     <% end %>
-  </div>
+  </section>
 
   <div class="post-list">
     <% if @posts.size > 0 %>
@@ -62,7 +62,8 @@
         </div>
       <% end %>
     </p>
-  <% else %>
-    <p>投稿はまだありません</p>
-  <% end %>
+    <% else %>
+      <p>投稿はまだありません</p>
+    <% end %>
+  </div>
 </div>

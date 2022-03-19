@@ -1,6 +1,6 @@
 <div class="show-post-wrapper">
   <div class="post-list">
-    <div class="post-box">
+    <section class="post-box">
       <div class="post-top">
         <div class="post-user-box">
           <%= link_to("/users/#{@post.user.id}") do %>
@@ -49,6 +49,6 @@
       <div class="post-items" id="favorite_<%= @post.id %>">
         <%= render 'posts/post_items', post: @post %>
       </div>
-    </div>
+    </section>
   </div>
 </div>

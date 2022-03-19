@@ -15,7 +15,7 @@
       </div>
   <% end %>
 
-  <div class="post-list">
+  <section class="post-list">
     <% @posts.each do |post| %>
       <div class="post-box">
         <div class="post-top">
@@ -70,7 +70,7 @@
         </div>
       </div>
     <% end %>
-  </div>
+  </section>
 </div>
 
 <%= javascript_pack_tag 'posts/postform' %>
