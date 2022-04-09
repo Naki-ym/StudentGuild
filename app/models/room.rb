@@ -3,4 +3,5 @@ class Room < ApplicationRecord
   validates :caption, {presence: true}
 
   has_many :room_users
+  has_many :messages
 end

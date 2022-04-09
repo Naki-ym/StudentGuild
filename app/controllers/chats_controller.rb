@@ -11,6 +11,12 @@ class ChatsController < ApplicationController
     @room = Room.new
   end
   def room
+    @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+    @rooms = []
+    @room_users.each do |room_user|
+      @room = Room.find_by(id: room_user.room_id, is_deleted: false)
+      @rooms << @room
+    end
   end
   def edit
   end
