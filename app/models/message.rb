@@ -3,4 +3,8 @@ class Message < ApplicationRecord
 
   belongs_to :room
   belongs_to :user
+
+  def user
+    return User.find_by(id: self.user_id, is_deleted: false)
+  end
 end

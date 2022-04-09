@@ -17,23 +17,32 @@
       </ul>
     </li>
     <section class="talk-room">
-      <div class="chat-box">
-        <div class="partner-msg">
-          <div class="text-msg">aaaaaaa</div>
-        </div>
-        <div class="partner-msg">
-          <div class="text-msg">aaaaaaa</div>
-        </div>
-        <div class="user-msg">
-          <div class="text-msg">aaaaaaa</div>
-        </div>
+      <div class="chat-box scroll-from-bottom">
+        <% @messages.each do |msg| %>
+          <% if msg.user == @current_user %>
+            <div class="user-msg">
+              <div class="msg-box">
+                <div class="text-msg"><%= msg.content %></div>
+              </div>
+            </div>
+          <% else %>
+            <div class="partner-msg">
+              <p><%= msg.user.name %></p>
+              <div class="msg-box">
+                <div class="text-msg"><%= msg.content %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      <div class="text-box">
+      <%= form_tag("/chats/#{@current_room.id}/create", class: "text-box") do %>
         <div class="border">
-          <textarea class="new-msg" rows="1" name="msg"></textarea>
+          <textarea class="new-msg" rows="1" name="content"></textarea>
         </div>
-        <i class="far fa-paper-plane"></i>
-      </div>
+        <%= button_tag(type: 'submit') do %>
+          <i class="far fa-paper-plane"></i>
+        <% end %>
+      <% end %>
     </section>
   </div>
   

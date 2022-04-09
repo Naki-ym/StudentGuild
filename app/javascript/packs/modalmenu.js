@@ -10,4 +10,4 @@ $(function(){
   $('.md-close').on('click',function(){
     $('.md-overlay,.md-contents').fadeOut();
   });
-});
+}); 

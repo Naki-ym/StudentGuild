@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   post "chats/:id/update" => "chats#update"
   post "chats/:id/delete" => "chats#delete"
 
-  post "chats/:id/crate" => "messages#crate"
+  post "chats/:id/create" => "messages#create"
 
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   post 'favorite/:id/delete' => 'favorites#delete', as: 'delete_favorite'

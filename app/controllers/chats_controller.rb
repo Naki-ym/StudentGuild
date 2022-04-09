@@ -11,12 +11,14 @@ class ChatsController < ApplicationController
     @room = Room.new
   end
   def room
+    @current_room = Room.find_by(id: params[:id], is_deleted: false)
     @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
     @rooms = []
     @room_users.each do |room_user|
       @room = Room.find_by(id: room_user.room_id, is_deleted: false)
       @rooms << @room
     end
+    @messages = Message.where(room_id: params[:id], is_deleted: false)
   end
   def edit
   end
@@ -24,7 +26,7 @@ class ChatsController < ApplicationController
   end
   def crate_individual
     @user = User.find_by(id: params[:id], is_deleted: false)
-    @room = Room.new(name: @user.name, caption: "#{@user.name}さんとの個人チャット", is_group_chat: false)
+    @room = Room.new(name: "#{@user.name}&#{@current_user.name}", caption: "#{@user.name}さんと#{@current_user}さんでの個人チャット", is_group_chat: false)
     unless @room.save
       render("users/#{@user.id}")
       exit

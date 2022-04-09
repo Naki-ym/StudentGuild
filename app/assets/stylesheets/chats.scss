@@ -50,45 +50,53 @@
       border-bottom: solid 2px $accent-color-line;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
       .partner-msg {
-        margin: 1.5em 0 1.5em 16px;
-        .text-msg {
-          position: relative;
-          display: inline-block;
-          padding: 8px 12px;
-          min-width: 120px;
-          max-width: 100%;
-          font-size: 16px;
-          background: $base-color-250;
-          &:before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -16px;
-            margin-top: -12px;
-            border: 8px solid transparent;
-            border-right: 12px solid $base-color-250;
+        margin: 20px 0 8px 16px;
+        p {
+          margin-bottom: 8px;
+        }
+        .msg-box {
+          .text-msg {
+            position: relative;
+            display: inline-block;
+            padding: 8px 12px;
+            min-width: 120px;
+            max-width: 100%;
+            font-size: 16px;
+            background: $base-color-250;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -16px;
+              margin-top: -12px;
+              border: 8px solid transparent;
+              border-right: 12px solid $base-color-250;
+            }
           }
         }
       }
       .user-msg {
-        margin: 1.5em 16px 1.5em auto;
-        .text-msg {
-          position: relative;
-          display: inline-block;
-          padding: 8px 12px;
-          min-width: 120px;
-          max-width: 100%;
-          font-size: 16px;
-          background: $base-color-150;
-          &:before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: -16px;
-            margin-top: -12px;
-            border: 8px solid transparent;
-            border-left: 12px solid $base-color-150;
+        margin: 20px 16px 8px auto;
+        .msg-box {
+          .text-msg {
+            position: relative;
+            display: inline-block;
+            padding: 8px 12px;
+            min-width: 120px;
+            max-width: 100%;
+            font-size: 16px;
+            background: $base-color-150;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: -16px;
+              margin-top: -12px;
+              border: 8px solid transparent;
+              border-left: 12px solid $base-color-150;
+            }
           }
         }
       }
@@ -122,13 +130,17 @@
       .box-focus {
         border: solid 2px $accent-color-line-active;
       }
-      i {
-        margin-top: auto;
-        font-size: 20px;
-        transition: 0.3s;
-        padding: 12px 4px 16px 12px;
-        &:hover {
-          opacity: 0.5;
+      button {
+        background: none;
+        border: none;
+        i {
+          margin-top: auto;
+          font-size: 20px;
+          transition: 0.3s;
+          padding: 12px 4px 16px 12px;
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
     }

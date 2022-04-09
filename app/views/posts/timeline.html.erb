@@ -8,11 +8,11 @@
 
 <div class="tl-post-list">
   <%= form_tag("/posts/create") do %>
-      <textarea class="newpost-text" rows="2" name="content"><%= @post.content %></textarea>
-      <div class="newpost-items">
-        <i class="far fa-image"></i>
-        <input type="submit" value="投稿" class="btn">
-      </div>
+    <textarea class="newpost-text" rows="2" name="content"><%= @post.content %></textarea>
+    <div class="newpost-items">
+      <i class="far fa-image"></i>
+      <input type="submit" value="投稿" class="btn">
+    </div>
   <% end %>
 
   <section class="post-list">
