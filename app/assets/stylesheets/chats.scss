@@ -21,6 +21,9 @@
       padding: 15px;
       &:last-of-type{
         border-bottom: none;
+        a {
+          display: flex;
+        }
       }
       h2 {
         font-weight: normal;
@@ -48,15 +51,15 @@
       display: flex;
       flex-direction: column;
       .partner-msg {
+        margin: 1.5em 0 1.5em 16px;
         .text-msg {
           position: relative;
           display: inline-block;
-          margin: 1.5em 0 1.5em 16px;
           padding: 8px 12px;
           min-width: 120px;
           max-width: 100%;
           font-size: 16px;
-          background: $accent-color-line;
+          background: $base-color-250;
           &:before {
             content: "";
             position: absolute;
@@ -64,28 +67,28 @@
             left: -16px;
             margin-top: -12px;
             border: 8px solid transparent;
-            border-right: 12px solid $accent-color-line;
+            border-right: 12px solid $base-color-250;
           }
         }
       }
       .user-msg {
+        margin: 1.5em 16px 1.5em auto;
         .text-msg {
           position: relative;
           display: inline-block;
-          margin: 1.5em 0 1.5em 15px;
           padding: 8px 12px;
           min-width: 120px;
           max-width: 100%;
           font-size: 16px;
-          background: $accent-color-line;
+          background: $base-color-150;
           &:before {
             content: "";
             position: absolute;
             top: 50%;
-            left: -16px;
+            right: -16px;
             margin-top: -12px;
             border: 8px solid transparent;
-            border-right: 12px solid $accent-color-line;
+            border-left: 12px solid $base-color-150;
           }
         }
       }

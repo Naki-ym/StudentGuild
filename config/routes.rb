@@ -22,6 +22,14 @@ Rails.application.routes.draw do
   post "posts/:id/delete" => "posts#delete"
 
   get "chats" => "chats#top"
+  get "chats/create" => "chats#new"
+  get "chats/:id" => "chats#room"
+  get "chats/:id/edit" => "chats#edit"
+  post "chats/crate" => "chats#crate"
+  post "chats/:id/update" => "chats#update"
+  post "chats/:id/delete" => "chats#delete"
+
+  post "chats/:id/crate" => "messages#crate"
 
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   post 'favorite/:id/delete' => 'favorites#delete', as: 'delete_favorite'

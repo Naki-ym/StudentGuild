@@ -2,20 +2,35 @@
   <div class="chat-wrapper">
     <li class="room-li">
       <ul>
-        <h2>ユーザー1</h2>
-        <p>トーク内容</p>
+        <%= link_to("#") do %>
+          <h2>ユーザー1</h2>
+          <p>トーク内容</p>
+        <% end %>
       </ul>
       <ul>
-        <h2>ユーザー2</h2>
-        <p>トーク内容</p>
+        <%= link_to("#") do %>
+          <h2>ユーザー2</h2>
+          <p>トーク内容</p>
+        <% end %>
       </ul>
       <ul>
-        <h2>ユーザー3</h2>
-        <p>トーク内容</p>
+        <%= link_to("#") do %>
+          <h2>ユーザー3</h2>
+          <p>トーク内容</p>
+        <% end %>
+      </ul>
+      <ul>
+        <%= link_to("chats/create") do %>
+          <i class="fas fa-plus"></i>
+          <p>トークルーム追加</p>
+        <% end %>
       </ul>
     </li>
     <section class="talk-room">
       <div class="chat-box">
+        <div class="partner-msg">
+          <div class="text-msg">aaaaaaa</div>
+        </div>
         <div class="partner-msg">
           <div class="text-msg">aaaaaaa</div>
         </div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :favorites
+  has_many :room_users
 
   def favorited_by?(post_id)
     favorites.where(post_id: post_id, is_deleted: false).exists?
