@@ -4,6 +4,14 @@
     <% if @user.id == @current_user.id %>
       <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
       <%= link_to("", "/settings", class: "icon fas fa-cog") %>
+    <% else %>
+      <%= @roomusers.size %>
+      <%= link_to("フォロー", "#", class: "btn") %>
+      <% if @room %>
+        <%= link_to("", "/chats", class: "icon far fa-envelope") %>
+      <% else %>
+        <%= link_to("", "/chats/crate/indibidual/#{@user.id}", class: "icon far fa-envelope", method: :post) %>
+      <% end %>
     <% end %>
   </section>
 
@@ -20,7 +28,7 @@
           <div id="modal<%= post.id %>" class="modal">
             <div class="md-overlay md-close"></div>
             <div class="md-contents">
-              <ul class="md-list">  
+              <ul class="md-list">
                 <% if post.user_id == @current_user.id %>
                   <li>
                     <%= link_to("/posts/#{post.id}/edit") do %>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "chats/:id" => "chats#room"
   get "chats/:id/edit" => "chats#edit"
   post "chats/crate" => "chats#crate"
+  post "chats/crate/indibidual/:id" => "chats#crate_individual"
   post "chats/:id/update" => "chats#update"
   post "chats/:id/delete" => "chats#delete"
 

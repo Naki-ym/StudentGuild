@@ -38,6 +38,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @posts = Post.where(user_id: @user.id, is_deleted: false)
+    @roomusers = RoomUser.where(user_id: @current_user, is_deleted: false)
+    @room = nil
+    @roomusers.each do |roomuser|
+      @my_roomusers = RoomUser.find_by(room_id: roomuser.room_id, user_id:@user.id, is_deleted: false)
+      if @my_roomusers
+        @room = Room.find_by(id: @my_roomusers.room_id, is_group_chat: false, is_deleted: false)
+      end
+    end
   end
   def edit
     @user = User.find_by(id: params[:id])

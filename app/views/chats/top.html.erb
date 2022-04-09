@@ -1,24 +1,14 @@
 <div class="not-scroll">
   <div class="chat-wrapper">
     <li class="room-li">
-      <ul>
-        <%= link_to("#") do %>
-          <h2>ユーザー1</h2>
-          <p>トーク内容</p>
-        <% end %>
-      </ul>
-      <ul>
-        <%= link_to("#") do %>
-          <h2>ユーザー2</h2>
-          <p>トーク内容</p>
-        <% end %>
-      </ul>
-      <ul>
-        <%= link_to("#") do %>
-          <h2>ユーザー3</h2>
-          <p>トーク内容</p>
-        <% end %>
-      </ul>
+      <% @rooms.each do |room| %>
+        <ul>
+          <%= link_to("#") do %>
+            <h2><%= room.name %></h2>
+            <p>トーク内容</p>
+          <% end %>
+        </ul>
+      <% end %>
       <ul>
         <%= link_to("chats/create") do %>
           <i class="fas fa-plus"></i>

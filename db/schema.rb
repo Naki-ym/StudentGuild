@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_002801) do
   create_table "room_users", force: :cascade do |t|
     t.integer "room_id", null: false
     t.integer "user_id", null: false
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_room_users_on_room_id"
