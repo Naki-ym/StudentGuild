@@ -6,6 +6,7 @@
     border-radius: 4px;
     margin-bottom: 20px;
     padding: 12px 20px 4px;
+    width: 100%;
     .post-top {
       display: flex;
       justify-content: space-between;
@@ -22,6 +23,7 @@
       width: 100%;
       font-size: 24px;
       text-align: left;
+      word-wrap: break-word;
     }
     .post-items {
       display: flex;
