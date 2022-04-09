@@ -28,6 +28,10 @@
     .newpost-items {
       display: flex;
       justify-content: flex-end;
+      i {
+        padding: 16px;
+        font-size: 32px
+      }
     }
   }
 }
