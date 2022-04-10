@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   post "posts/:id/delete" => "posts#delete"
 
   get "chats" => "chats#top"
-  get "chats/create" => "chats#new"
+  get "chats/create" => "chats#create"
   get "chats/:id" => "chats#room"
   get "chats/:id/edit" => "chats#edit"
-  post "chats/crate" => "chats#crate"
+  post "chats/create" => "chats#create_group"
   post "chats/crate/indibidual/:id" => "chats#crate_individual"
   post "chats/:id/update" => "chats#update"
   post "chats/:id/delete" => "chats#delete"

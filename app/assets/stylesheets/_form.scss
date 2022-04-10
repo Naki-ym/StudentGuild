@@ -30,5 +30,24 @@
       border: none;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
     }
+    .user-list {
+      background-color: white;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+      height: 240px;
+      overflow-y: auto;
+      ul {
+        padding: 0 12px;
+        li {
+        border-bottom: solid 1px $accent-color-line;
+          padding: 15px;
+          &:last-of-type{
+            border-bottom: none;
+            a {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
   }
 }

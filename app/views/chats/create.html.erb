@@ -1,0 +1,37 @@
+<div class="form-wrapper">
+  <h1>新規トークルーム作成</h1>
+  <%= form_tag("/chats/create") do %>
+    <div class="form">
+      <div class="form-item">
+        <h2>グループ名</h2>
+        <input name="name" value="<%= @room.name %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>グループの概要</h2>
+        <input name="caption" value="<%= @room.caption %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>招待するユーザー<%= @roomusers[1].user_id %></h2>
+        <div class="user-list">
+          <ul>
+            <li>
+              <input type="checkbox" id="checkbox1" name="user[]" value="0">
+              <label for="checkbox1">ユーザー1</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkbox2" name="check[]" value="1">
+              <label for="checkbox2">ユーザー2</label>
+            </li>
+            <li>
+              <input type="checkbox" id="checkbox3" name="check[]" value="2">
+              <label for="checkbox3">ユーザー3</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="btns">
+      <input type="submit" value="新規登録" class="btn">
+    </div>
+  <% end %>
+</div>
