@@ -22,14 +22,14 @@
           <% if msg.user == @current_user %>
             <div class="user-msg">
               <div class="msg-box">
-                <div class="text-msg"><%= msg.content %></div>
+                <div class="text-msg"><%= simple_format(msg.content) %></div>
               </div>
             </div>
           <% else %>
             <div class="partner-msg">
               <p><%= msg.user.name %></p>
               <div class="msg-box">
-                <div class="text-msg"><%= msg.content %></div>
+                <div class="text-msg"><%= simple_format(msg.content) %></div>
               </div>
             </div>
           <% end %>

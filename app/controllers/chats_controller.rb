@@ -38,8 +38,7 @@ class ChatsController < ApplicationController
         render("users/show")
       end 
     end
-    flash[:notice] = "グループを作成しました"
-    redirect_to("/chats")
+    redirect_to("/chats/#{@room.id}")
   end
   def update
   end

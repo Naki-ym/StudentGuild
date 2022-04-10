@@ -53,6 +53,8 @@
       overflow-y: auto;
       .partner-msg {
         margin: 20px 0 8px 16px;
+        max-width: 72%;
+        word-wrap: break-word;
         p {
           margin-bottom: 8px;
         }
@@ -61,14 +63,13 @@
             position: relative;
             display: inline-block;
             padding: 8px 12px;
-            min-width: 120px;
             max-width: 100%;
             font-size: 16px;
             background: $base-color-250;
             &:before {
               content: "";
               position: absolute;
-              top: 50%;
+              top: 16px;
               left: -16px;
               margin-top: -12px;
               border: 8px solid transparent;
@@ -79,19 +80,19 @@
       }
       .user-msg {
         margin: 20px 16px 8px auto;
+        max-width: 72%;
         .msg-box {
           .text-msg {
             position: relative;
             display: inline-block;
             padding: 8px 12px;
-            min-width: 120px;
             max-width: 100%;
             font-size: 16px;
             background: $base-color-150;
             &:before {
               content: "";
               position: absolute;
-              top: 50%;
+              top: 16px;
               right: -16px;
               margin-top: -12px;
               border: 8px solid transparent;
