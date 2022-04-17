@@ -11,21 +11,15 @@
         <input name="caption" value="<%= @room.caption %>" class="textbox">
       </div>
       <div class="form-item">
-        <h2>招待するユーザー<%= @roomusers[1].user_id %></h2>
+        <h2>招待するユーザー</h2>
         <div class="user-list">
           <ul>
-            <li>
-              <input type="checkbox" id="checkbox1" name="user[]" value="0">
-              <label for="checkbox1">ユーザー1</label>
-            </li>
-            <li>
-              <input type="checkbox" id="checkbox2" name="check[]" value="1">
-              <label for="checkbox2">ユーザー2</label>
-            </li>
-            <li>
-              <input type="checkbox" id="checkbox3" name="check[]" value="2">
-              <label for="checkbox3">ユーザー3</label>
-            </li>
+            <% @users.each do |user| %>
+              <li>
+                <input type="checkbox" id="checkbox<%= user.id %>" name="users[]" value="<%= user.id %>">
+                <label for="checkbox<%= user.id %>"><%= user.name %></label>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
