@@ -49,14 +49,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 40px;
     h1 {
+      color: white;
+      line-height: 1.2;
+    }
+  }
+  .box3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    font-size: 40px;
+    h1 {
+      margin-bottom: 24px;
+    }
+  }
+  .box4{
+    position: relative;
+    z-index: 2;
+    height: 30px;
+    background-color: $base-color-300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    font-size: 24px;
+    small {
       color: white;
     }
   }
-}
-footer{
-  position: relative;
-  z-index: 2;
-  height: 100px;
 }
