@@ -5,7 +5,7 @@
         <ul>
           <%= link_to("/chats/#{room.id}") do %>
             <h2><%= room.name %></h2>
-            <p>トーク内容</p>
+            <p><%= get_newest_message(room.id) %></p>
           <% end %>
         </ul>
       <% end %>
