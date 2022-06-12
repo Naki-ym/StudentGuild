@@ -14,16 +14,22 @@ class ChatsController < ApplicationController
     @roomusers = []
     @users = []
     @myroomusers.each do |myroomuser|
-      @myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
-      @rooms << @myroom
+      myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
+      if myroom
+        @rooms << myroom
+      end
     end
     @rooms.each do |room|
-      @roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
-      @roomusers << @roomuser
+      roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
+      if roomuser
+        @roomusers << roomuser
+      end
     end
     @roomusers.each do |roomuser|
-      @user = User.find_by(id: roomuser.user_id)
-      @users << @user
+      user = User.find_by(id: roomuser.user_id)
+      if user
+        @users << user
+      end
     end
   end
   def room
@@ -55,23 +61,29 @@ class ChatsController < ApplicationController
       end
       redirect_to("/chats/#{@room.id}")
     else
+      @error_message = "失敗しました"
       @myroomusers = RoomUser.where(user_id: @current_user.id, is_deleted: false)
       @rooms = []
       @roomusers = []
       @users = []
       @myroomusers.each do |myroomuser|
-        @myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
-        @rooms << @myroom
+        myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
+        if myroom
+          @rooms << myroom
+        end
       end
       @rooms.each do |room|
-        @roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
-        @roomusers << @roomuser
+        roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
+        if roomuser
+          @roomusers << roomuser
+        end
       end
       @roomusers.each do |roomuser|
-        @user = User.find_by(id: roomuser.user_id)
-        @users << @user
+        user = User.find_by(id: roomuser.user_id)
+        if user
+          @users << user
+        end
       end
-      @error_message = "失敗しました"
       render("chats/create")
     end
   end
