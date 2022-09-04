@@ -1,0 +1,18 @@
+<div class="form-wrapper">
+  <h1>新規募集</h1>
+  <%= form_tag("/projects/create") do %>
+    <div class="form">
+      <div class="form-item">
+        <h2>プロジェクト名</h2>
+        <input name="name" value="<%= @project.name %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>概要</h2>
+        <input name="caption" value="<%= @project.caption %>" class="textbox">
+      </div>
+    </div>
+    <div class="btns">
+      <input type="submit" value="募集" class="btn">
+    </div>
+  <% end %>
+</div>

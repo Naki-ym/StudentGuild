@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post "posts/:id/update" => "posts#update"
   post "posts/:id/delete" => "posts#delete"
 
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  post 'favorite/:id/delete' => 'favorites#delete', as: 'delete_favorite'
+  
   get "chats" => "chats#top"
   get "chats/create" => "chats#create"
   get "chats/:id" => "chats#room"
@@ -29,10 +32,13 @@ Rails.application.routes.draw do
   post "chats/crate/indibidual/:id" => "chats#crate_individual"
   post "chats/:id/update" => "chats#update"
   post "chats/:id/delete" => "chats#delete"
-
   post "chats/:id/create" => "messages#create"
 
-  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
-  post 'favorite/:id/delete' => 'favorites#delete', as: 'delete_favorite'
+  get "projects" => "projects#board"
+  get "projects/myproject" => "projects#myproject"
+  get "projects/create" => "projects#create_project"
+  get "projects/:id" => "projects#show"
+  post "projects/create" => "projects#create"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

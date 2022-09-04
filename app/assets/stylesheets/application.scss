@@ -18,13 +18,13 @@
 @import "_reset";
 @import "_variable";
 * {
-  font-family: 'Kosugi', sans-serif;
+  font-family: "游ゴシック", "Yu Gothic";
   color: $base-color-400;
   user-select: none;
 }
 
 body {
-  background-color: $base-color-100;
+  background-color: white;
 }
 
 ::-webkit-scrollbar {
@@ -52,7 +52,7 @@ body {
   width: fit-content;
   border: 4px solid $base-color-400;
   font-size: 20px;
-  background: $base-color-100;
+  background: white;
   transition: 0.5s ;
   user-select: none;
   &:hover {
@@ -101,11 +101,11 @@ img {
   width: 50%;
   max-width: 1190px;
   margin: 0 auto 0;
-  text-align: center;
+  text-align: center; 
 }
 
 .under-header {
-  height: 50px;
+  height: 76px;
 }
 
 .redtext * {

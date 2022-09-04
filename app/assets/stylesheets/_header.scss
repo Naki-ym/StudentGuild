@@ -2,11 +2,12 @@
 @import "_variable";
 
 header {
-  background-color: $accent-color-header;
   width: 100%;
-  padding: 12px 3% 4px;
+  height: 60px;
+  padding-left: 4%;
+  background-color: white;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   position: fixed;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,6 +22,7 @@ header {
     font-size: 32px;
     font-weight: normal;
     color: $base-color-400;
+    font-weight: bold;
     transition: 0.3s;
     &:hover {
       opacity: 0.5;
@@ -41,7 +43,7 @@ header {
           opacity: 0.5;
         }
         .header-list-item {
-          color: $base-color-400;
+          color: $base-color-275;
           position: relative;
           &::after {
             content: '';

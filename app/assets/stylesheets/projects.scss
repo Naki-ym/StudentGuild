@@ -1,0 +1,35 @@
+@charset "utf-8";
+@import "_variable";
+
+.projects-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+  .menu {
+    flex: 1;
+    text-align: left;
+    .menu-list {
+      padding: 10px;
+      li {
+        padding-bottom: 20px;
+      }
+    }
+  }
+  .projects-bord {
+    flex: 4 ;
+    padding: 10px;
+    display: grid;
+    gap: 40px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .project-box {
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+      .project-content {
+        padding-top: 10px;
+      }
+    }
+  }
+}

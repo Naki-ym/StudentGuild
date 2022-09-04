@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import "_variable";
 
+.not-scroll {
+  height: calc(100px - 76px);
+}
+
 .chats {
   overflow: hidden;
 }

@@ -1,0 +1,24 @@
+<div class="not-scroll">
+  <div class="projects-wrapper">
+    <section class="menu">
+      <ul class="menu-list">
+        <li><%= link_to("NewProject", "/projects/create", {class: "list-btn"}) %></li>
+        <li><%= link_to("MyProject", "#", {class: "list-btn"}) %></li>
+        <li>aaaa</li>
+        <li>aaaa</li>
+      </ul>
+    </section>
+    <section class="projects-bord">
+      <% 20.times do %>
+        <div class="project-box">
+          <img src="/assets/image.png" alt="image" title="image">
+          <div class="project-content">
+            <h2>project title</h2>
+            <p>content</p>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  </div>
+
+</div>
