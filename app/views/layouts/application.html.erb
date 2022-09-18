@@ -15,17 +15,17 @@
 </head>
 <body class='<%= controller.controller_name %>'>
   <header>
-    <% if session[:user_id] %>
-      <%= link_to("Student Guild", "/timeline", {class: "header-logo"}) %>
+    <% if @current_user %>
+      <%= link_to("Student Guild", "/projects", {class: "header-logo"}) %>
     <% else %>
       <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
     <% end %>
     <nav class="pc-nav">
       <ul>
-        <% if session[:user_id] %>
+        <% if @current_user %>
+          <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
           <li><%= link_to("TimeLine", "/timeline", {class: "header-list-item"}) %></li>
           <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
-          <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
           <li><%= link_to("#{@current_user.name}", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
         <% else %>
           <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>

@@ -35,10 +35,13 @@ Rails.application.routes.draw do
   post "chats/:id/create" => "messages#create"
 
   get "projects" => "projects#board"
-  get "projects/myproject" => "projects#myproject"
+  get "myprojects" => "projects#myproject"
   get "projects/create" => "projects#create_project"
   get "projects/:id" => "projects#show"
   post "projects/create" => "projects#create"
+  post "projects/:id/publish" => "projects#publish"
+  post "projects/:id/unpublish" => "projects#unpublish"
+  post "projects/:id/delete" => "projects#delete"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

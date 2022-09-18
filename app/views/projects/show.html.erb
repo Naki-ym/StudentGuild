@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <img src="/assets/image.png" alt="image" title="image" class="project-img">
+  <div class="project-show-box">
+    <h2><%= @project.name %></h2>
+    <div class="project-show-data">
+      <p>募集条件：<%= @project.target %></p>
+      <% if @project.user.id != @current_user.id %>
+        <p>企画者：<%= @project.user.name %></p>
+      <% end %>
+    </div>
+    <%= @project.detail %>
+    <div class="btns">
+      <% if @project.user.id == @current_user.id %>
+        <% if @project.is_published == true %>
+            <%= button_to "非公開にする", "/projects/#{@project.id}/unpublish", {class: "btn"} %>
+        <% else %>
+          <%= button_to "公開する", "/projects/#{@project.id}/publish", {class: "btn"} %>
+        <%end%>
+        <%= button_to "削除する", "/projects/#{@project.id}/delete", {class: "btn"} %>
+      <% else %>
+        <%= button_to "応募する", "#", {method: :get, class: "btn"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

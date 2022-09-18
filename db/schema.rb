@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_072326) do
+ActiveRecord::Schema.define(version: 2022_09_04_035919) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id", null: false
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2022_04_09_072326) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "overview", null: false
+    t.string "target", null: false
+    t.text "detail", null: false
+    t.boolean "is_published", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "room_users", force: :cascade do |t|
@@ -75,6 +88,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_072326) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "projects", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
 end

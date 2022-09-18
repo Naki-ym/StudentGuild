@@ -8,11 +8,19 @@
       </div>
       <div class="form-item">
         <h2>概要</h2>
-        <input name="caption" value="<%= @project.caption %>" class="textbox">
+        <input name="overview" value="<%= @project.overview %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>募集対象</h2>
+        <input name="target" value="<%= @project.target %>" class="textbox">
+      </div>
+      <div class="form-item">
+        <h2>詳細</h2>
+        <textarea name="detail" class="textarea"><%= @project.detail %></textarea>
       </div>
     </div>
     <div class="btns">
-      <input type="submit" value="募集" class="btn">
+      <input type="submit" value="保存" class="btn">
     </div>
   <% end %>
 </div>

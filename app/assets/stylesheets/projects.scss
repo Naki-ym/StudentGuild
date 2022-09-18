@@ -14,22 +14,53 @@
       li {
         padding-bottom: 20px;
       }
+      .list-btn {
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: white;
+        background: $main-color;
+        border: 1px solid $main-color;
+        transition: 0.4s;
+        &:hover {
+          color: $main-color;
+          background: white;
+        }
+      }
+    }
+  }
+  .projects-right {
+    flex: 4 ;
+    padding: 10px;
+    h1 {
+      font-size: 32px;
+      padding-bottom: 16px;
     }
   }
   .projects-bord {
-    flex: 4 ;
-    padding: 10px;
     display: grid;
     gap: 40px 20px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     .project-box {
-      img {
-        width: 100%;
-        border-radius: 8px;
-      }
+      transition: 0.2s;
       .project-content {
         padding-top: 10px;
       }
+      &:hover {
+        opacity: 0.8;
+      }
     }
+  }
+}
+
+.project-img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.project-show-box {
+  text-align: left;
+  margin: 24px 0;
+  .project-show-data {
+    margin: 16px 0;
   }
 }
