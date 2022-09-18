@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  delete_flg: false
+  id: 1
+  name: aaaaa
+  email: aaa@aaa.com
+  password_digest: <%= BCrypt::Password.create('aaaaa') %>
+  is_deleted: false
 
 two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  delete_flg: false
+  id: 2
+  name: bbbbb
+  email: bbb@bbb.com
+  password_digest: <%= BCrypt::Password.create('bbbbb') %>
+  is_deleted: false

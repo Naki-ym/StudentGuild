@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   validates :detail, {presence: true}
 
   belongs_to :user
+  has_many :entries
 
   def user
     return User.find_by(id: self.user_id, is_deleted: false)

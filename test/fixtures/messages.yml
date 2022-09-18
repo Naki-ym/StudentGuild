@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   content: MyString
   user: 1
   room: 1
   is_deleted: false
 
 two:
+  id: 2
   content: MyString
-  user: 1
+  user: 2
   room: 1
   is_deleted: false

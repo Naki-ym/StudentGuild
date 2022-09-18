@@ -12,13 +12,18 @@
     <div class="btns">
       <% if @project.user.id == @current_user.id %>
         <% if @project.is_published == true %>
-            <%= button_to "非公開にする", "/projects/#{@project.id}/unpublish", {class: "btn"} %>
+          <%= button_to "届いた応募を見る", "/projects/#{@project.id}/entries", {method: :get, class: "btn"} %>
+          <%= button_to "非公開にする", "/projects/#{@project.id}/unpublish", {class: "btn"} %>
         <% else %>
           <%= button_to "公開する", "/projects/#{@project.id}/publish", {class: "btn"} %>
         <%end%>
         <%= button_to "削除する", "/projects/#{@project.id}/delete", {class: "btn"} %>
       <% else %>
-        <%= button_to "応募する", "#", {method: :get, class: "btn"} %>
+        <% if @entry %>
+          <h2>応募済み</h2>
+        <% else %>
+          <%= button_to "応募する", "/projects/#{@project.id}/entry", {method: :get, class: "btn"} %>
+        <%end%>
       <% end %>
     </div>
   </div>

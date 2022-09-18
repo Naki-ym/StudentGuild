@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="post-list">
+    <% if @entries.size > 0 %>
+      <% @entries.each do |entry| %>
+        <div class="post-box">
+          <div class="post-top">
+            <div class="post-user-box">
+              <%= link_to("/users/#{entry.user.id}") do %>
+                <p><%= entry.user.name %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="post-content">
+            <p><%= entry.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </p>
+    <% else %>
+      <p>投稿はまだありません</p>
+    <% end %>
+  </div>
+</div>
