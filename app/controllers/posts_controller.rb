@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     @posts = Post.where(is_deleted: false).order(created_at: :desc)
   end
   def create
-    @post = Post.new(content: params[:content], user_id: @current_user.id)
+    @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "投稿しました"
       redirect_to("/timeline")
@@ -23,8 +23,7 @@ class PostsController < ApplicationController
   end
   def update
     @post = Post.find_by(id: params[:id])
-    @post.content = params[:content]
-    if @post.save
+    if @post.update(post_params)
       flash[:notice] = "変更を保存しました"
       redirect_to("/posts/#{@post.id}")
     else
@@ -52,5 +51,10 @@ class PostsController < ApplicationController
         render("posts/show")
       end
     end
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:content).merge(user_id: @current_user.id)
   end
 end

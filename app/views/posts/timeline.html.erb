@@ -7,11 +7,11 @@
 <% end %>
 
 <div class="tl-post-list">
-  <%= form_tag("/posts/create") do %>
-    <textarea class="newpost-text" rows="2" name="content"><%= @post.content %></textarea>
+  <%= form_with model: @post, url: "/posts/create" do |f| %>
+    <%= f.text_area :content, class: "newpost-text", rows: "2" %>
     <div class="newpost-items">
       <i class="far fa-image"></i>
-      <input type="submit" value="投稿" class="btn">
+      <%= f.submit "投稿", class: "btn" %>
     </div>
   <% end %>
 

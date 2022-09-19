@@ -1,10 +1,10 @@
 <section class="tl-post-list">
-  <%= form_tag("/posts/#{@post.id}/update") do %>
-      <textarea class="newpost-text" rows="2" name="content"><%= @post.content %></textarea>
-      <div class="newpost-items">
-        <i class="far fa-image"></i>
-        <input type="submit" value="保存" class="btn">
-      </div>
+  <%= form_with model: @post, url: "/posts/#{@post.id}/update" do |f| %>
+    <%= f.text_area :content, class: "newpost-text", rows: "2" %>
+    <div class="newpost-items">
+      <i class="far fa-image"></i>
+      <%= f.submit "投稿", class: "btn" %>
+    </div>
   <% end %>
 </section>
 

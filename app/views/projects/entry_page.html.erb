@@ -1,14 +1,14 @@
 <div class="form-wrapper">
   <h1>新規募集</h1>
-  <%= form_tag("/projects/#{@project.id}/entry") do %>
+  <%= form_with model: @entry, url: "/projects/#{params[:id]}/entry" do |f| %>
     <div class="form">
       <div class="form-item">
         <h2>自己PR</h2>
-        <textarea name="content" class="textarea"><%= @entry.content %></textarea>
+        <%= f.text_area :content, class: "textarea" %>
       </div>
     </div>
     <div class="btns">
-      <input type="submit" value="応募" class="btn">
+      <%= f.submit "応募", class: "btn" %>
     </div>
   <% end %>
 </div>

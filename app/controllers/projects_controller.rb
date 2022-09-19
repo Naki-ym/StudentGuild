@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
     @entry = Entry.new
   end
   def entry
-    @entry = Entry.new(user_id: @current_user.id, project_id: params[:id], content: params[:content])
+    @entry = Entry.new(entry_params)
     #応募済みでないか
     unless Entry.find_by(user_id: @current_user.id, project_id: params[:id], is_deleted: false)
       if @entry.save
@@ -69,6 +69,10 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache).merge(user_id: @current_user.id)  
+    params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache).merge(user_id: @current_user.id)
+  end
+
+  def entry_params
+    params.require(:entry).permit(:content).merge(user_id: @current_user.id, project_id: params[:id])
   end
 end
