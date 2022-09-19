@@ -34,6 +34,7 @@ header {
   .pc-nav {
     ul {
       display: flex;
+      align-items: center;
       li {
         margin: 0 16px;
         padding: 0 12px;
@@ -61,6 +62,13 @@ header {
             transform: scale(0, 1);/*X方向0、Y方向1*/
             transform-origin: center top;/*上部中央基点*/
           }
+        }
+        .header-usericon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          user-select: none;
+          margin-right: 16px;
         }
       }
       .header-list-item:hover::after {

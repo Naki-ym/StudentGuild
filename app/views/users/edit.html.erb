@@ -18,6 +18,14 @@
         <h2>メールアドレス</h2>
         <%= f.text_field :email, class: "textbox" %>
       </div>
+      <div class="form-item">
+        <h2>アイコン</h2>
+        <div class="form-iconbox">
+          <%= image_tag(@user.icon.url, class: "preview-usericon") if @user.icon? %>
+          <%= f.file_field :icon %>
+          <%= f.hidden_field :icon_cache %>
+        </div>
+      </div>
       <div class="btns">
         <%= button_to "キャンセル", "javascript:history.back()", {method: :get, class: "btn"} %>
         <%= f.submit "保存", class: "btn" %>

@@ -1,17 +1,26 @@
 <div class="wrapper">
-  <h1><%= @user.name %></h1>
-  <section class="user-btnarea">
-    <% if @user.id == @current_user.id %>
-      <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
-      <%= link_to("", "/settings", class: "icon fas fa-cog") %>
+  <section class="user-box">
+    <% if @user.icon? %>
+      <%= image_tag @user.icon.url, class:"big-usericon" %>
     <% else %>
-      <%= link_to("フォロー", "#", class: "btn") %>
-      <% if @room %>
-        <%= link_to("", "/chats", class: "icon far fa-envelope") %>
-      <% else %>
-        <%= link_to("", "/chats/crate/indibidual/#{@user.id}", class: "icon far fa-envelope", method: :post) %>
-      <% end %>
+      <img src="/assets/icon.png" alt="icon" title="icon" class="big-usericon">
     <% end %>
+    <div class="user-box-right">
+      <h1><%= @user.name %></h1>
+      <div class="user-box-btnarea">
+        <% if @user.id == @current_user.id %>
+          <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
+          <%= link_to("", "/settings", class: "icon fas fa-cog") %>
+        <% else %>
+          <%= link_to("フォロー", "#", class: "btn") %>
+          <% if @room %>
+            <%= link_to("", "/chats", class: "icon far fa-envelope") %>
+          <% else %>
+            <%= link_to("", "/chats/crate/indibidual/#{@user.id}", class: "icon far fa-envelope", method: :post) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </section>
 
   <div class="post-list">
@@ -20,6 +29,11 @@
         <div class="post-box">
           <div class="post-top">
             <div class="post-user-box">
+              <% if post.user.icon? %>
+                <%= image_tag post.user.icon.url, class:"usericon" %>
+              <% else %>
+                <img src="/assets/icon.png" alt="icon" title="icon" class="usericon">
+              <% end %>
               <p><%= post.user.name %></p>
             </div>
             <a href="" class="md-btn" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>

@@ -3,18 +3,38 @@
 @import "_form";
 @import "_postlist";
 
-.user-btnarea {
+
+.user-box {
+  padding: 16px 24px;
   display: flex;
-  justify-content: flex-end;
-  vertical-align: middle;
-  .icon {
-    display: inline;
-    font-size: 24px;
-    margin: 12px;
-    padding: 4px 12px;
-    transition: 0.3s ;
-    &:hover {
-      opacity: 0.5;
+  align-items: center;
+  .big-usericon {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    user-select: none;
+    margin-right: 40px;
+  }
+  .user-box-right {
+    text-align: left;
+    flex-grow: 1;
+    h1 {
+      font-size: 32px;
+    }
+    .user-box-btnarea {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .icon {
+        display: inline;
+        font-size: 24px;
+        margin: 12px;
+        padding: 4px 12px;
+        transition: 0.3s ;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
     }
   }
 }

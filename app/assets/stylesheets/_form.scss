@@ -60,6 +60,18 @@
         }
       }
     }
+    .form-iconbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .preview-usericon {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        user-select: none;
+        margin-right: 20px;
+      }
+    }
     &:last-child {
       margin-bottom: 0;
     }

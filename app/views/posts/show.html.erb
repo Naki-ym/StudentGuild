@@ -2,11 +2,16 @@
   <div class="post-list">
     <section class="post-box">
       <div class="post-top">
-        <div class="post-user-box">
-          <%= link_to("/users/#{@post.user.id}") do %>
+        <%= link_to("/users/#{@post.user.id}") do %>
+          <div class="post-user-box">
+            <% if @post.user.icon? %>
+              <%= image_tag @post.user.icon.url, class:"usericon" %>
+            <% else %>
+              <img src="/assets/icon.png" alt="icon" title="icon" class="usericon">
+            <% end %>
             <p><%= @post.user.name %></p>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
         <a href="" class="md-btn" data-target="modal<%= @post.id %>"><i class="fas fa-ellipsis-v"></i></a>
       </div>
       <div id="modal<%= @post.id %>" class="modal">

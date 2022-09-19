@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :name, {presence: true, length: {maximum: 30}}
   validates :email, {presence: true, uniqueness: true}
+  validates :icon, {presence: true}
 
   has_many :posts
   has_many :favorites
@@ -9,6 +10,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :projects
   has_many :entries
+
+  mount_uploader :icon, IconUploader
 
   def favorited_by?(post_id)
     favorites.where(post_id: post_id, is_deleted: false).exists?

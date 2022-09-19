@@ -26,7 +26,15 @@
           <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
           <li><%= link_to("TimeLine", "/timeline", {class: "header-list-item"}) %></li>
           <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
-          <li><%= link_to("#{@current_user.name}", "/users/#{@current_user.id}", {class: "header-list-item"}) %></li>
+          <li>
+            <%= link_to("/users/#{@current_user.id}") do %>
+              <% if @current_user.icon? %>
+                <%= image_tag @current_user.icon.url, class:"header-usericon" %>
+              <% else %>
+                <img src="/assets/icon.png" alt="icon" title="icon" class="header-usericon">
+              <% end %>
+            <% end %>
+          </li>
         <% else %>
           <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>
           <li><%= link_to("Login", "/login", {class: "header-list-item"}) %></li>
