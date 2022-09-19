@@ -8,6 +8,8 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :entries
 
+  mount_uploader :image, ProjectImageUploader
+
   def user
     return User.find_by(id: self.user_id, is_deleted: false)
   end

@@ -12,6 +12,7 @@ one:
   target: aaa
   detail: aaaaaaaa
   is_published: true
+  image: image.png
 
 two:
   id: 2
@@ -21,3 +22,4 @@ two:
   target: bbb
   detail: bbbbbbbbbbb
   is_published: true
+  image: image.png

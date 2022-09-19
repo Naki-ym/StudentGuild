@@ -15,12 +15,8 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
   def create
-    @project = Project.new(
-      name: params[:name],
-      user_id: @current_user.id,
-      overview: params[:overview],
-      target: params[:target],
-      detail: params[:detail])
+    @project = Project.new(project_params) 
+    p @project
     if @project.save
       redirect_to("/myprojects")
     else
@@ -69,5 +65,10 @@ class ProjectsController < ApplicationController
     @project.is_deleted = true
     @project.save
     redirect_to("/myprojects")
+  end
+
+  private
+  def project_params
+    params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache).merge(user_id: @current_user.id)  
   end
 end

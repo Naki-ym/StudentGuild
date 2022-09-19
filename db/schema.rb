@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_18_120414) do
+ActiveRecord::Schema.define(version: 2022_09_19_030014) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_09_18_120414) do
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

@@ -1,26 +1,57 @@
 <div class="form-wrapper">
   <h1>新規募集</h1>
-  <%= form_tag("/projects/create") do %>
+  <!--
+    <%= form_tag("/projects/create") do %>
+      <div class="form">
+        <div class="form-item">
+          <h2>プロジェクト名</h2>
+          <input name="name" value="<%= @project.name %>" class="textbox">
+        </div>
+        <div class="form-item">
+          <h2>概要</h2>
+          <input name="overview" value="<%= @project.overview %>" class="textbox">
+        </div>
+        <div class="form-item">
+          <h2>募集対象</h2>
+          <input name="target" value="<%= @project.target %>" class="textbox">
+        </div>
+        <div class="form-item">
+          <h2>詳細</h2>
+          <textarea name="detail" class="textarea"><%= @project.detail %></textarea>
+        </div>
+      </div>
+      <div class="btns">
+        <input type="submit" value="保存" class="btn">
+      </div>
+    <% end %>
+  -->
+  <%= form_with model: @project, url: "/projects/create" do |f| %>
     <div class="form">
       <div class="form-item">
         <h2>プロジェクト名</h2>
-        <input name="name" value="<%= @project.name %>" class="textbox">
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>サムネイル</h2>
+        <%= image_tag(@project.image.url) if @project.image? %>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
       </div>
       <div class="form-item">
         <h2>概要</h2>
-        <input name="overview" value="<%= @project.overview %>" class="textbox">
+        <%= f.text_field :overview, class: "textbox" %>
       </div>
       <div class="form-item">
         <h2>募集対象</h2>
-        <input name="target" value="<%= @project.target %>" class="textbox">
+        <%= f.text_field :target, class: "textbox" %>
       </div>
       <div class="form-item">
         <h2>詳細</h2>
-        <textarea name="detail" class="textarea"><%= @project.detail %></textarea>
+        <%= f.text_area :detail, class: "textarea" %>
       </div>
-    </div>
-    <div class="btns">
-      <input type="submit" value="保存" class="btn">
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
     </div>
   <% end %>
 </div>

@@ -35,6 +35,10 @@ gem 'bcrypt'
 #controller内の変数をJavascript内で使う
 gem 'gon'
 
+#画像アップロード
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
