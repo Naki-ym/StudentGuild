@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   def timeline
-    @post = Post.new
+    @post  = Post.new
     @posts = Post.where(is_deleted: false).order(created_at: :desc)
   end
   def create
     @post = Post.new(post_params)
+
     if @post.save
       flash[:notice] = "投稿しました"
       redirect_to("/timeline")
@@ -18,11 +19,12 @@ class PostsController < ApplicationController
     @user = User.find_by(id: @post.user_id)
   end
   def edit
-    @post = Post.find_by(id: params[:id])
+    @post    = Post.find_by(id: params[:id])
     @content = @post.content
   end
   def update
     @post = Post.find_by(id: params[:id])
+
     if @post.update(post_params)
       flash[:notice] = "変更を保存しました"
       redirect_to("/posts/#{@post.id}")
@@ -32,8 +34,9 @@ class PostsController < ApplicationController
     end
   end
   def delete
-    @post = Post.find_by(id: params[:id])
+    @post      = Post.find_by(id: params[:id])
     @favorites = Favorite.where(post_id: @post.id)
+    
     @favorites.each do |favorite|
       favorite.is_deleted = true
       favorite.save

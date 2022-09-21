@@ -1,18 +1,20 @@
 class ChatsController < ApplicationController
   def top
     @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
-    @rooms = []
+    @rooms      = []
+
     @room_users.each do |room_user|
       @room = Room.find_by(id: room_user.room_id, is_deleted: false)
       @rooms << @room
     end
   end
   def create
-    @room = Room.new
+    @room        = Room.new
     @myroomusers = RoomUser.where(user_id: @current_user.id, is_deleted: false)
-    @rooms = []
-    @roomusers = []
-    @users = []
+    @rooms       = []
+    @roomusers   = []
+    @users       = []
+
     @myroomusers.each do |myroomuser|
       myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
       if myroom
@@ -34,8 +36,9 @@ class ChatsController < ApplicationController
   end
   def room
     @current_room = Room.find_by(id: params[:id], is_deleted: false)
-    @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
-    @rooms = []
+    @room_users   = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+    @rooms        = []
+
     @room_users.each do |room_user|
       @room = Room.find_by(id: room_user.room_id, is_deleted: false)
       @rooms << @room
@@ -46,7 +49,8 @@ class ChatsController < ApplicationController
   end
   def create_group
     @users_id = params[:users]
-    @room = Room.new(name: params[:name], caption: params[:caption], is_group_chat: true)
+    @room     = Room.new(name: params[:name], caption: params[:caption], is_group_chat: true)
+
     if @room.save
       @members = [@current_user]
       @users_id.each do |user_id|
@@ -90,6 +94,7 @@ class ChatsController < ApplicationController
   def crate_individual
     @user = User.find_by(id: params[:id], is_deleted: false)
     @room = Room.new(name: "#{@user.name}&#{@current_user.name}", caption: "#{@user.name}さんと#{@current_user}さんでの個人チャット", is_group_chat: false)
+    
     unless @room.save
       render("users/show")
       exit
