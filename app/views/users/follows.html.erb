@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="user-list">
+    <% if @users.size > 0 %>
+      <% @users.each do |user| %>
+        <div class="user-tile">
+          <%= link_to("/users/#{user.id}") do %>
+            <p><%= user.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>フォローしているユーザーはいません</p>
+    <% end %>
+  </div>
+</div>

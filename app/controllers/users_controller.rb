@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #ログインしていないユーザーがアクセスできない
-  before_action :authenticate_user, {only: [:edit, :update, :logout, :destroy]}
+  before_action :authenticate_user, {only: [:edit, :update, :logout, :delete, :settings, :follows, :followers]}
   #ログインしているユーザーがアクセスできない
   before_action :forbid_login_user, {only: [:signup, :create, :login_form, :login]}
 
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "ユーザー登録が完了しました"
+      flash[:notice]    = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
       render("signup")
@@ -22,11 +22,11 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email], is_deleted: false)
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "ログインしました"
+      flash[:notice]    = "ログインしました"
       redirect_to("/users/#{@user.id}/")
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
-      @email = params[:email]
+      @email         = params[:email]
       render("users/login_form")
     end
   end
@@ -36,10 +36,12 @@ class UsersController < ApplicationController
     redirect_to("/login")
   end
   def show
-    @user = User.find_by(id: params[:id])
-    @posts = Post.where(user_id: @user.id, is_deleted: false)
-    @roomusers = RoomUser.where(user_id: @current_user, is_deleted: false)
-    @room = nil
+    @user            = User.find_by(id: params[:id])
+    @posts           = Post.where(user_id: @user.id, is_deleted: false)
+    @following_users = @user.following_user
+    @follower_users  = @user.follower_user
+    @roomusers       = RoomUser.where(user_id: @current_user, is_deleted: false)
+    @room            = nil
     @roomusers.each do |roomuser|
       @my_roomusers = RoomUser.find_by(room_id: roomuser.room_id, user_id:@user.id, is_deleted: false)
       if @my_roomusers
@@ -48,8 +50,8 @@ class UsersController < ApplicationController
     end
   end
   def edit
-    @user = User.find_by(id: params[:id])
-    @name = @user.name
+    @user  = User.find_by(id: params[:id])
+    @name  = @user.name
     @email = @user.email
   end
   def update
@@ -58,14 +60,14 @@ class UsersController < ApplicationController
       flash[:notice] = "変更を保存しました"
       redirect_to("/users/#{@user.id}/")
     else
-      @name = @user.name
+      @name  = @user.name
       @email = @user.email
       render("users/edit")
     end
   end
   def delete
-    @user = User.find_by(id: params[:id])
-    @posts = Post.where(user_id: @user.id)
+    @user      = User.find_by(id: params[:id])
+    @posts     = Post.where(user_id: @user.id)
     @favorites = Favorite.where(user_id: @user.id)
     @favorites.each do |favorite|
       favorite.is_deleted = true
@@ -83,7 +85,7 @@ class UsersController < ApplicationController
     @user.is_deleted = true
     if @user.save
       session[:user_id] = nil
-      flash[:notice] = "ユーザーを削除しました"
+      flash[:notice]    = "ユーザーを削除しました"
       redirect_to("/login")
     else
       @error_message = "削除に失敗しました"
@@ -91,6 +93,16 @@ class UsersController < ApplicationController
     end
   end
   def settings
+  end
+
+  def follows
+    user   = User.find(params[:id])
+    @users = user.following_user.reverse_order
+  end
+  
+  def followers
+    user   = User.find(params[:id])
+    @users = user.follower_user.reverse_order
   end
 
   private

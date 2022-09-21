@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   patch "users/:id/update" => "users#update"
   post "users/:id/delete" => "users#delete"
 
+  get "users/:id/follows" => "users#follows"
+  get "users/:id/followers" => "users#followers"
+  post "users/:id/relationships" => "relationships#create"
+  delete "users/:id/relationships" => "relationships#destroy"
+
   get "timeline" => "posts#timeline"
   get "posts/create" => "posts#timeline"
   get "posts/:id" => "posts#show"

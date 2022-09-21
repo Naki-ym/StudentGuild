@@ -8,11 +8,23 @@
     <div class="user-box-right">
       <h1><%= @user.name %></h1>
       <div class="user-box-btnarea">
+        <%= link_to("/users/#{@user.id}/follows") do %>
+          <p>フォロー:<%= @following_users.count %></p>
+        <% end %>
+        <%= link_to("/users/#{@user.id}/followers") do %>
+          <p>フォロワー:<%= @follower_users.count %></p>
+        <% end %>
         <% if @user.id == @current_user.id %>
           <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
           <%= link_to("", "/settings", class: "icon fas fa-cog") %>
         <% else %>
-          <%= link_to("フォロー", "#", class: "btn") %>
+          <% if @current_user != @user %>
+            <% if @current_user.following?(@user) %>
+              <%= link_to 'フォロー解除', "/users/#{@user.id}/relationships", method: :delete, class: "btn" %>
+            <% else %>
+              <%= link_to 'フォロー', "/users/#{@user.id}/relationships", method: :POST, class:"btn" %>
+            <% end %>
+          <% end %>
           <% if @room %>
             <%= link_to("", "/chats", class: "icon far fa-envelope") %>
           <% else %>
