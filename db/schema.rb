@@ -99,10 +99,10 @@ ActiveRecord::Schema.define(version: 2022_09_21_132749) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.string "icon", default: "icon.png", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "icon"
   end
 
   add_foreign_key "entries", "projects"

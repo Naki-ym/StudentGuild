@@ -1,9 +1,23 @@
 <div class="wrapper">
+  <div class="follows_followers_tab">
+    <%= link_to("/users/#{@user.id}/follows") do %>
+      <p>フォロー <%= @following_users.count %></p>
+    <% end %>
+    <%= link_to("/users/#{@user.id}/followers", class: "target") do %>
+      <p>フォロワー <%= @follower_users.count %></p>
+    <% end %>
+  </div>
+  <h1>フォロワー</h1>
   <div class="user-list">
     <% if @users.size > 0 %>
       <% @users.each do |user| %>
         <div class="user-tile">
           <%= link_to("/users/#{user.id}") do %>
+            <% if user.icon? %>
+              <%= image_tag post.user.icon.url, class:"usericon" %>
+            <% else %>
+              <img src="/assets/icon.png" alt="icon" title="icon" class="usericon">
+            <% end %>
             <p><%= user.name %></p>
           <% end %>
         </div>

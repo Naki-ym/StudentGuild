@@ -9,7 +9,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.icon = "icon.png"
 
+    p @user
     if @user.save
       session[:user_id] = @user.id
       flash[:notice]    = "ユーザー登録が完了しました"
@@ -108,13 +110,17 @@ class UsersController < ApplicationController
   end
 
   def follows
-    user   = User.find(params[:id])
-    @users = user.following_user.reverse_order
+    @user   = User.find_by(id: params[:id])
+    @following_users = @user.following_user
+    @follower_users  = @user.follower_user
+    @users = @user.following_user.reverse_order
   end
   
   def followers
-    user   = User.find(params[:id])
-    @users = user.follower_user.reverse_order
+    @user   = User.find_by(id: params[:id])
+    @following_users = @user.following_user
+    @follower_users  = @user.follower_user
+    @users = @user.follower_user.reverse_order
   end
 
   private
