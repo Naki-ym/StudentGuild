@@ -16,7 +16,7 @@
         <% end %>
         <% if @user.id == @current_user.id %>
           <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
-          <%= link_to("", "/settings", class: "icon fas fa-cog") %>
+          <%= link_to("", "/settings", class: "icon fas fa-cog", title: "設定") %>
         <% else %>
           <% if @current_user != @user %>
             <% if @current_user.following?(@user) %>

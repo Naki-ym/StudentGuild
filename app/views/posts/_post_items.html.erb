@@ -1,18 +1,18 @@
 <% if session[:user_id] %>
   <% if @current_user.favorited_by?(post.id) %>
     <%= link_to("/favorite/#{post.id}/delete", method: :post, remote: true) do %>
-      <div class="fav-icon">
+      <div class="fav-icon" title="いいねを取り消す">
         <i class="fas fa-heart"></i>
         <p><%= post.favorites.count %></p>
       </div>
     <% end %>
   <% else %>
     <%= link_to("/favorite/#{post.id}", method: :post, remote: true) do %>
-      <div class="fav-icon">
+      <div class="fav-icon" title="いいね！">
         <i class="far fa-heart"></i>
         <p><%= post.favorites.count %></p>
       </div>
     <% end %>
   <% end %>
 <% end %>
-<i class="fas fa-share-alt"></i>
+<i class="fas fa-share-alt" title="共有"></i>
