@@ -50,9 +50,16 @@
                 </li>
               <% else %>
                 <li>
-                  <%= link_to("#") do %>
-                    <i class="fas fa-user-plus"></i>
-                    <p>このユーザーをフォロー</p>
+                  <% if @current_user.following?(post.user) %>
+                    <%= link_to("/users/#{post.user.id}/relationships", method: :delete) do %>
+                      <i class="fas fa-user-plus"></i>
+                      <p>このユーザーのフォローを解除</p>
+                    <% end %>
+                  <% else %>
+                    <%= link_to("/users/#{post.user.id}/relationships", method: :POST) do %>
+                      <i class="fas fa-user-plus"></i>
+                      <p>このユーザーをフォロー</p>
+                    <% end %>
                   <% end %>
                 </li>
                 <li>
