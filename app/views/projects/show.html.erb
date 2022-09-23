@@ -2,7 +2,7 @@
   <% if @project.image? %>
     <%= image_tag @project.image.url, class:"project-img" %>
   <% else %>
-    <img src="/assets/image.png" alt="image" title="image" class="project-img">
+    <img src="/assets/image.png" alt="image" class="project-img">
   <% end %>
   <div class="project-show-box">
     <h2><%= @project.name %></h2>
