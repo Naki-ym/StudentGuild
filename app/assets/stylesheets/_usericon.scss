@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.header-usericon {
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 16px;
+  user-select: none;
+  width: 40px;
+}
+
+.usericon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  user-select: none;
+  margin-right: 16px;
+}
+
+.big-usericon {
+  border-radius: 50%;
+  height: 160px;
+  margin-right: 40px;
+  user-select: none;
+  width: 160px;
+}

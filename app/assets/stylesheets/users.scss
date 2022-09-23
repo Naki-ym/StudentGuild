@@ -1,21 +1,15 @@
 @charset "utf-8";
-@import "_variable";
 @import "_form";
 @import "_postlist";
+@import "_usericon";
 @import "_userlist";
+@import "_variable";
 
 
 .user-box {
   align-items: center;
   display: flex;
   padding: 16px 24px;
-  .big-usericon {
-    border-radius: 50%;
-    height: 160px;
-    margin-right: 40px;
-    user-select: none;
-    width: 160px;
-  }
   .user-box-right {
     flex-grow: 1;
     text-align: left;

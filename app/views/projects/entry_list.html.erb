@@ -1,16 +1,19 @@
 <div class="wrapper">
-  <div class="post-list">
+  <div class="entry-list">
     <% if @entries.size > 0 %>
       <% @entries.each do |entry| %>
-        <div class="post-box">
-          <div class="post-top">
-            <div class="post-user-box">
-              <%= link_to("/users/#{entry.user.id}") do %>
-                <p><%= entry.user.name %></p>
+        <div class="entry-box">
+          <div class="entry-user-box">
+            <%= link_to("/users/#{entry.user.id}") do %>
+              <% if entry.user.icon? %>
+                <%= image_tag entry.user.icon.url, class:"usericon" %>
+              <% else %>
+                <img src="/assets/icon.png" alt="icon" title="icon" class="usericon">
               <% end %>
-            </div>
+              <p><%= entry.user.name %></p>
+            <% end %>
           </div>
-          <div class="post-content">
+          <div class="entry-content">
             <p><%= entry.content %></p>
           </div>
         </div>

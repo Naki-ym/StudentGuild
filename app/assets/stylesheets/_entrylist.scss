@@ -1,0 +1,32 @@
+@charset "utf-8";
+.entry-list {
+  padding-top: 10px;
+  .entry-box {
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 20px;
+    padding: 12px 20px 4px;
+    width: 100%;
+    .entry-user-box a {
+      align-items: center;
+      display: flex;
+      font-size: 20px;
+      padding-bottom: 12px;
+      .usericon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        user-select: none;
+        margin-right: 16px;
+      }
+    }
+    .entry-content {
+      width: 100%;
+      font-size: 24px;
+      text-align: left;
+      word-wrap: break-word;
+      padding: 8px 16px 24px;
+    }
+  }
+}
