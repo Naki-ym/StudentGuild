@@ -1,3 +1,6 @@
+@charset "utf-8";
+@import "_variable";
+
 .post-list {
   padding-top: 10px;
   .post-box {
@@ -41,10 +44,12 @@
           opacity: 0.5;
         }
         i {
+          color: $base-color-100;
           padding-right: 4px;
         }
       }
       > i {
+        color: $base-color-100;
         font-size: 20px;
         transition: 0.3s;
         padding: 12px;
