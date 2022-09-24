@@ -2,17 +2,24 @@
 
 // Colors
   // BaseColor
-  $base-color-400: #262626;
-  $base-color-300: #3f3f3f;
-  $base-color-275: #525252;
-  $base-color-250: #cacaca;
-  $base-color-200: #dcdcdc;
-  $base-color-150: #eeeeee;
-  $base-color-100: #f5f5f5;
+  // $base-color-400: #262626;
+  // $base-color-300: #3f3f3f;
+  // $base-color-275: #525252;
+  // $base-color-250: #cacaca;
+  // $base-color-200: #dcdcdc;
+  // $base-color-150: #eeeeee;
+
+  $base-color-10:  #FFFDF6;
+  $base-color-20:  #FAF6E9;
+  $base-color-30:  #ECE8D9;
+  $base-color-90:  #494949;
+  $base-color-100: #262626;
 
   // MainColor
-  $main-color: #6b48ff;
-  $main-bg-color: #cabeff;
+  $main-color: #516bae;
+  $main-bg-color: #ccdaff;
+
+  $btn-main-color: rgba(255, 255, 255, 0);
 
   // AccentColor
   $accent-color-success: #4cdb8f;

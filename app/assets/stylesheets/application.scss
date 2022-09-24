@@ -19,23 +19,23 @@
 @import "_variable";
 * {
   font-family: "游ゴシック", "Yu Gothic";
-  color: $base-color-400;
+  color: $base-color-100;
   user-select: none;
 }
 
 body {
-  background-color: white;
+  background-color: $base-color-10;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  width: 4px;
+  width: 8px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 12px;
-  background-color: $main-color;
+  background-color: $base-color-90;
 }
 
 .btns {
@@ -46,19 +46,19 @@ body {
 
 .btn {
   display: block;
-  color: $base-color-400;
+  color: $base-color-100;
   margin: 8px;
   padding: 8px;
   width: fit-content;
-  border: 1px solid $base-color-400;
+  border: 1px solid $base-color-100;
   font-size: 20px;
-  background: white;
+  background: $btn-main-color;
   transition: 0.3s ;
   user-select: none;
   &:hover {
     opacity: 1;
-    color: $base-color-100;
-    background: $base-color-400;
+    color: $base-color-10;
+    background: $base-color-100;
   }
 }
 
