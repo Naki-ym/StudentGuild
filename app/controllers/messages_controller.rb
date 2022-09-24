@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user
+
   def create
     @msg = Message.new(content: params[:content], room_id: params[:id], user_id: @current_user.id, )
     if @msg.save

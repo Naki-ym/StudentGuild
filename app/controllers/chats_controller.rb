@@ -1,4 +1,7 @@
 class ChatsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user
+  
   def top
     @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
     @rooms      = []

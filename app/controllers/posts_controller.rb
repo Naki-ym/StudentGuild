@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user
+
   def timeline
     @post  = Post.new
     @posts = Post.where(is_deleted: false).order(created_at: :desc)

@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user
+
   def board
     @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
   end
