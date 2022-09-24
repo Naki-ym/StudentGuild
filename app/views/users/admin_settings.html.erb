@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <h1>管理メニュー</h1>
+  <ul class="btn-list">
+    <li>
+      <label>
+        <%= link_to "#" do %>
+          <i class="fas fa-tags"></i>
+          <p>タグの管理</p>
+        <% end %>
+      </label>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fas fa-users"></i>
+        <p>ユーザーの管理</p>
+      <% end %>
+    </li>
+  </ul>
+  <div class="btns">
+    <%= button_to "戻る", "/users/#{@current_user.id}", {method: :get, class: "btn"} %>
+  </div>
+</div>

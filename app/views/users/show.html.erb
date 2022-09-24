@@ -7,14 +7,19 @@
     <% end %>
     <div class="user-box-right">
       <h1><%= @user.name %></h1>
-      <div class="user-box-btnarea">
+      <div class="follow-box">
         <%= link_to("/users/#{@user.id}/follows") do %>
           <p>フォロー:<%= @following_users.count %></p>
         <% end %>
         <%= link_to("/users/#{@user.id}/followers") do %>
           <p>フォロワー:<%= @follower_users.count %></p>
         <% end %>
+      </div>
+      <div class="user-box-btnarea">
         <% if @user.id == @current_user.id %>
+          <% if @user.admin? %>
+            <%= link_to("管理画面", "/admin", class: "btn") %>
+          <% end %>
           <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
           <%= link_to("", "/settings", class: "icon fas fa-cog", title: "設定") %>
         <% else %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "login" => "users#login_form"
   get "settings" => "users#settings"
+  get "admin" => "users#admin_settings"
   get "signup" => "users#signup"
   post "login" => "users#login"
   post "logout" => "users#logout"

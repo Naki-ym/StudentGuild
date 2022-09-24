@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_21_132749) do
+ActiveRecord::Schema.define(version: 2022_09_24_082240) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_09_21_132749) do
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "entries", "projects"

@@ -35,4 +35,10 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def admin?
+    if self.admin == true
+      return true
+    end
+  end
 end

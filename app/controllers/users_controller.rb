@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   #ログインしていないユーザーがアクセスできない
-  before_action :authenticate_user, {only: [:edit, :update, :logout, :delete, :settings, :follows, :followers]}
+  before_action :authenticate_user, {except: [:signup, :create, :login_form, :login]}
   #ログインしているユーザーがアクセスできない
   before_action :forbid_login_user, {only: [:signup, :create, :login_form, :login]}
+  #管理者アカウントのみがアクセスできる
+  before_action :admin_user, {only: [:admin_settings]}
 
   def signup
   end
@@ -121,6 +123,9 @@ class UsersController < ApplicationController
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
     @users = @user.follower_user.reverse_order
+  end
+
+  def admin_settings
   end
 
   private

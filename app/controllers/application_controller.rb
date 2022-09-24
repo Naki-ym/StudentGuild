@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
       redirect_to("/users/#{@current_user.id}")
     end
   end
+
+  def admin_user
+    if @current_user.admin == false
+      flash[:notice] = "管理者権限のあるアカウントのみアクセスできます"
+      redirect_to("/users/#{@current_user.id}")
+    end
+  end
 end
