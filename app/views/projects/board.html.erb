@@ -1,11 +1,16 @@
 <div class="not-scroll">
   <div class="projects-wrapper">
-    <section class="menu">
-      <ul class="menu-list">
-        <li><%= link_to("MyProject", "/myprojects", {class: "list-btn"}) %></li>
-        <li>aaaa</li>
-        <li>aaaa</li>
-      </ul>
+    <section class="projects-left">
+      <div class="fixed">
+        <div class="menu">
+          <ul class="menu-list">
+            <li><%= link_to("MyProject", "/myprojects", {class: "list-btn"}) %></li>
+            <% 20.times do %>
+              <li>aaaa</li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </section>
     <section class="projects-right">
       <h1>最近の募集</h1>
