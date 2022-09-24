@@ -4,7 +4,6 @@ class Project < ApplicationRecord
   validates :overview, {presence: true, length: {maximum: 200}}
   validates :target, {presence: true, length: {maximum: 200}}
   validates :detail, {presence: true}
-  validates :image, {presence: true}
 
   belongs_to :user
   has_many :entries

@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   def board
     @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
   end
+
   def myproject
     @allmyprojects = Project.where(user_id: @current_user.id, is_deleted: false).order(created_at: :desc)
     @projects      = @allmyprojects
@@ -33,6 +34,20 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find_by(id: params[:id], is_deleted: false)
     @entry   = Entry.find_by(user_id: @current_user.id, project_id: params[:id], is_deleted: false)
+  end
+
+  def edit
+    @project = Project.find_by(id: params[:id], is_deleted: false)
+  end
+
+  def update
+    @project = Project.find_by(id: params[:id], is_deleted: false)
+    if @project.update(project_params)
+      flash[:notice] = "変更を保存しました"
+      redirect_to("/projects/#{@project.id}/")
+    else
+      render("projects/edit")
+    end
   end
 
   def publish
