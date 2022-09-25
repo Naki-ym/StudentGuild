@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   post "projects/:id/entry" => "projects#entry"
   post "projects/:id/publish" => "projects#publish"
   post "projects/:id/unpublish" => "projects#unpublish"
+
+  get "tags" => "tags#list"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

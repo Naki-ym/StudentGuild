@@ -7,6 +7,8 @@ class Project < ApplicationRecord
 
   belongs_to :user
   has_many :entries
+  has_many :projects_tags
+  has_many :tags, through: :projects_tags
 
   mount_uploader :image, ProjectImageUploader
 

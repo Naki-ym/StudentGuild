@@ -32,6 +32,10 @@
         <h2>詳細</h2>
         <%= f.text_area :detail, class: "textarea" %>
       </div>
+      <div class="form-item">
+        <h2>タグ</h2>
+        <%= f.collection_select :tag, @tags, :id, :name, {selected: @tag.id}, {class: "select" } %>
+      </div>
       <div class="btns">
         <%= f.submit "保存", class: "btn" %>
       </div>

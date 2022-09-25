@@ -1,8 +1,10 @@
 @charset "utf-8";
+@import "_variable";
+
 .entry-list {
   padding-top: 10px;
   .entry-box {
-    background: white;
+    background: $base-color-10;
     border-radius: 4px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-bottom: 20px;

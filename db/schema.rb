@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_24_082240) do
+ActiveRecord::Schema.define(version: 2022_09_24_142136) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 2022_09_24_082240) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "projects_tags", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_projects_tags_on_project_id"
+    t.index ["tag_id"], name: "index_projects_tags_on_tag_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -95,6 +104,13 @@ ActiveRecord::Schema.define(version: 2022_09_24_082240) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -114,6 +130,8 @@ ActiveRecord::Schema.define(version: 2022_09_24_082240) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "projects_tags", "projects"
+  add_foreign_key "projects_tags", "tags"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "room_users", "rooms"
