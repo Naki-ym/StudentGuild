@@ -1,11 +1,29 @@
 <div class="wrapper">
-  <ul>
-    <% @categories.each do |category| %>
-      <li><%= category.name %></li>
+  <div class="page-top-btns">
+    <%= link_to("/tags", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
     <% end %>
-  </ul>
+  </div>
+  <h1>カテゴリ一覧</h1>
+  <table>
+    <tr>
+      <th class="width10">id</th>
+      <th>name</th>
+      <th class="width20"><!-- ボタン設置 --></th>
+    </tr>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td class="table-btns">
+          <i class="fas fa-pen"></i>
+          <i class="far fa-trash-alt"></i>
+        </td>
+      </tr>
+    <% end %>
+  </table>
   <div class="btns">
-    <%= button_to "戻る", "/tags", {method: :get, class: "btn"} %>
     <%= button_to "カテゴリ追加", "/tags/categories/create", {method: :get, class: "btn"} %>
   </div>
 </div>

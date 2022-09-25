@@ -1,4 +1,10 @@
 <div class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/tags", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
   <h1>新規タグ</h1>
   <%= form_with model: @tag, url: "/tags/create" do |f| %>
     <div class="form">

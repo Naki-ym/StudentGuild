@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{@current_user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
   <h1>管理メニュー</h1>
   <ul class="btn-list">
     <li>
@@ -16,7 +22,4 @@
       <% end %>
     </li>
   </ul>
-  <div class="btns">
-    <%= button_to "戻る", "/users/#{@current_user.id}", {method: :get, class: "btn"} %>
-  </div>
 </div>
