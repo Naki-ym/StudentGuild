@@ -22,7 +22,7 @@
           <%= link_to("/tags/#{tag.id}/edit") do %>
             <i class="fas fa-pen"></i>
           <% end %>
-          <%= link_to("#") do %>
+          <%= link_to("/tags/#{tag.id}/delete", method: :post) do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </td>

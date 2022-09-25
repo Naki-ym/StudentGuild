@@ -64,6 +64,8 @@ Rails.application.routes.draw do
   patch "tags/:id/update"            => "tags#update"
   post "tags/create"                 => "tags#create"
   post "tags/categories/create"      => "tags#create_category"
+  post "tags/categories/:id/delete"  => "tags#category_delete"
+  post "tags/:id/delete"             => "tags#delete"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

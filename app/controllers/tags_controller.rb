@@ -35,6 +35,12 @@ class TagsController < ApplicationController
     end
   end
 
+  def delete
+    @tag = Tag.find_by(id: params[:id])
+    @tag.delete
+    redirect_to("/tags")
+  end
+
   def category_list
     @categories = TagCategory.all
   end
