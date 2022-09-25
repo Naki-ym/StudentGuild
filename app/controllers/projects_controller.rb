@@ -131,8 +131,4 @@ class ProjectsController < ApplicationController
   def entry_params
     params.require(:entry).permit(:content).merge(user_id: @current_user.id, project_id: params[:id])
   end
-
-  def tag_params
-    params.require(:project).permit(:tag)
-  end
 end

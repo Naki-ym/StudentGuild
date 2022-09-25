@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_24_142136) do
+ActiveRecord::Schema.define(version: 2022_09_25_012907) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -104,11 +104,20 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tag_categories", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "tag_category_id", null: false
+    t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_category_id"], name: "index_tags_on_tag_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,4 +145,5 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
+  add_foreign_key "tags", "tag_categories"
 end

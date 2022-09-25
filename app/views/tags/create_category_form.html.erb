@@ -1,0 +1,14 @@
+<div class="form-wrapper">
+  <h1>新規タグカテゴリ</h1>
+  <%= form_with model: @category, url: "/tags/categories/create" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>カテゴリ名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>

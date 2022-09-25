@@ -119,6 +119,7 @@
         border: solid 2px $accent-color-line;
         border-radius: 16px;
         .new-msg {
+          background-color: $base-color-10;
           width: 100%;
           font-size: 16px;
           resize: none;

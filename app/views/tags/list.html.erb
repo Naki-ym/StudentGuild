@@ -4,4 +4,9 @@
       <li><%= tag.name %></li>
     <% end %>
   </ul>
+  <div class="btns">
+    <%= button_to "戻る", "/admin", {method: :get, class: "btn"} %>
+    <%= button_to "タグ追加", "/tags/create", {method: :get, class: "btn"} %>
+    <%= button_to "カテゴリ", "/tags/categories", {method: :get, class: "btn"} %>
+  </div>
 </div>

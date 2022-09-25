@@ -7,14 +7,17 @@
 one:
   id: 1
   name: "ruby"
+  tag_category_id: 1
   is_deleted: false
 
 two:
   id: 2
   name: "HTML"
+  tag_category_id: 1
   is_deleted: false
 
 three:
   id: 3
   name: "Python"
+  tag_category_id: 1
   is_deleted: false

@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+  <div class="btns">
+    <%= button_to "戻る", "/tags", {method: :get, class: "btn"} %>
+    <%= button_to "カテゴリ追加", "/tags/categories/create", {method: :get, class: "btn"} %>
+  </div>
+</div>

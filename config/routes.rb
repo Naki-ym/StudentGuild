@@ -55,6 +55,11 @@ Rails.application.routes.draw do
   post "projects/:id/unpublish" => "projects#unpublish"
 
   get "tags" => "tags#list"
+  get "tags/create" => "tags#create_form"
+  get "tags/categories" => "tags#category_list"
+  get "tags/categories/create" => "tags#create_category_form"
+  post "tags/create" => "tags#create"
+  post "tags/categories/create" => "tags#create_category"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

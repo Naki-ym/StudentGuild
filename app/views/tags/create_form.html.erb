@@ -1,0 +1,18 @@
+<div class="form-wrapper">
+  <h1>新規タグ</h1>
+  <%= form_with model: @tag, url: "/tags/create" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>タグ名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>カテゴリ</h2>
+        <%= f.collection_select :tag_category_id, @categories, :id, :name, {class: "select"} %>
+      </div>
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>

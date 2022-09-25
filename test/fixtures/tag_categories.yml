@@ -4,13 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-
 one:
   id: 1
-  project_id: 1
-  tag_id: 3
+  name: "プログラミング"
 
 two:
   id: 2
-  project_id: 2
-  tag_id: 2
+  name: "動画編集"
