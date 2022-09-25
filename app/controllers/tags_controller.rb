@@ -14,10 +14,24 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      flash[:notice] = "追加しました"
       redirect_to("/tags")
     else
       render("tags/create_form")
+    end
+  end
+
+  def edit
+    @tag  = Tag.find_by(id: params[:id])
+    @category = @tag.category
+    @categories = TagCategory.all
+  end
+
+  def update
+    @tag  = Tag.find_by(id: params[:id])
+    if @tag.update(tag_params)
+      redirect_to("/tags")
+    else
+      render("tags/edit")
     end
   end
 
@@ -33,10 +47,22 @@ class TagsController < ApplicationController
     @category = TagCategory.new(category_params)
 
     if @category.save
-      flash[:notice] = "追加しました"
       redirect_to("/tags/categories")
     else
       render("tags/create_category_form")
+    end
+  end
+
+  def category_edit
+    @category = TagCategory.find_by(id: params[:id])
+  end
+
+  def category_update
+    @category = TagCategory.find_by(id: params[:id])
+    if @category.update(category_params)
+      redirect_to("/tags/categories")
+    else
+      render("tags/category_edit")
     end
   end
 

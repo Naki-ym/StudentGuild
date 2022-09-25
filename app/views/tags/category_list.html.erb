@@ -17,8 +17,12 @@
         <td><%= category.id %></td>
         <td><%= category.name %></td>
         <td class="table-btns">
-          <i class="fas fa-pen"></i>
-          <i class="far fa-trash-alt"></i>
+          <%= link_to("/tags/categories/#{category.id}/edit") do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+          <%= link_to("#") do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>

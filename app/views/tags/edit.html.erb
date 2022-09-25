@@ -1,0 +1,24 @@
+<div class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/tags", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>タグ編集</h1>
+  <%= form_with model: @tag, url: "/tags/#{@tag.id}/update" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>タグ名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>カテゴリ</h2>
+        <%= f.collection_select :tag_category_id, @categories, :id, :name, {selected: @category.id}, {class: "select" } %>
+      </div>
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
