@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   post "projects/:id/publish"   => "projects#publish"
   post "projects/:id/unpublish" => "projects#unpublish"
 
+  match "dynamic_tag", to: 'projects#dynamic_tag', via: [:get, :post]
+
   get "tags"                         => "tags#list"
   get "tags/categories"              => "tags#category_list"
   get "tags/categories/create"       => "tags#create_category_form"

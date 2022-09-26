@@ -1,0 +1,5 @@
+<% if @tags.size > 0 %>
+  <%= select_tag "tag", options_from_collection_for_select(@tags, :id, :name) %>
+<% else %>
+  <%= select_tag "tag", options_for_select(["---"]) %>
+<% end %>

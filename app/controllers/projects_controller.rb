@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   def create_project
     @project = Project.new
     @tags = Tag.all
+    @categories = TagCategory.all
   end
 
   def create
@@ -32,11 +33,12 @@ class ProjectsController < ApplicationController
       image:       project_params["image"],
       image_cache: project_params["image_cache"])
     
-    if project_params["tag"] and @project.save
-      @project_tag = ProjectsTag.new(project_id: @project.id, tag_id: project_params["tag"])
+    if params[:tag] != "---" and @project.save
+      @project_tag = ProjectsTag.new(project_id: @project.id, tag_id: params[:tag])
       @project_tag.save
       redirect_to("/myprojects")
     else
+      @categories = TagCategory.all
       @tags = Tag.all
       render("projects/create_project")
     end
@@ -123,9 +125,16 @@ class ProjectsController < ApplicationController
     redirect_to("/myprojects")
   end
 
+  def dynamic_tag
+    @category = TagCategory.find_by(id: params[:project][:tag_category_id])
+    @tags = @category.tags
+    p "--------------------------------------------"
+    p @tags.size
+  end
+
   private
   def project_params
-    params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache, :tag).merge(user_id: @current_user.id)
+    params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache, :tag, :tag_category_id).merge(user_id: @current_user.id)
   end
 
   def entry_params
