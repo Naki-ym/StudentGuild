@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
       image:       project_params["image"],
       image_cache: project_params["image_cache"])
     
-    if @project.save and project_params["tag"]
+    if project_params["tag"] and @project.save
       @project_tag = ProjectsTag.new(project_id: @project.id, tag_id: project_params["tag"])
       @project_tag.save
       redirect_to("/myprojects")
