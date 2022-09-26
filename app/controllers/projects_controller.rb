@@ -18,9 +18,9 @@ class ProjectsController < ApplicationController
   end
 
   def create_project
-    @project = Project.new
-    @tags = Tag.all
     @categories = TagCategory.all
+    @project    = Project.new
+    @tags       = Tag.all
   end
 
   def create
@@ -50,9 +50,10 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(id: params[:id], is_deleted: false)
-    @tags = Tag.all
-    @tag = @project.tags.first
+    @categories = TagCategory.all
+    @project    = Project.find_by(id: params[:id], is_deleted: false)
+    @tags       = Tag.all
+    @tag        = @project.tags.first
   end
 
   def update
@@ -63,14 +64,10 @@ class ProjectsController < ApplicationController
     @project.detail      = project_params["detail"]
     @project.image       = project_params["image"]
     @project.image_cache = project_params["image_cache"]
-    if @project.save
+    if params[:tag] != "---" and @project.save
       @project_tags = ProjectsTag.where(project_id: @project.id)
       @project_tag = @project_tags.first
-      if @project_tag
-        @project_tag.tag_id = project_params["tag"]
-      else
-        @project_tag = ProjectsTag.new(project_id: @project.id, tag_id: project_params["tag"])
-      end
+      @project_tag.tag_id = params[:tag]
       @project_tag.save
       flash[:notice] = "変更を保存しました"
       redirect_to("/projects/#{@project.id}/")
