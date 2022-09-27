@@ -20,12 +20,21 @@
   <div class="project-show-box">
     <h2><%= @project.name %></h2>
     <div class="project-show-data">
-      <p>募集条件：<%= @project.target %></p>
       <% @project.tags.each do |tag| %>
-        <p><%= tag.name %></p>
+        <p>タグ：<%= tag.name %></p>
       <% end %>
+      <p>募集条件：<%= @project.target %></p>
       <% if @project.user.id != @current_user.id %>
         <p>企画者：<%= @project.user.name %></p>
+      <% else %>
+        <p>
+          公開状況：
+          <% if @project.is_published == true %>
+            公開中
+          <% else %>
+            非公開
+          <% end %>
+        </p>
       <% end %>
     </div>
     <%= @project.detail %>

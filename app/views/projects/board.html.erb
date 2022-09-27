@@ -4,7 +4,8 @@
       <div class="fixed">
         <div class="menu">
           <ul class="menu-list">
-            <li><%= link_to("MyProject", "/myprojects", {class: "list-btn"}) %></li>
+            <li><%= link_to("マイプロジェクト", "/myprojects", {class: "list-btn"}) %></li>
+            <li><%= link_to("すべて", "/projects", {class: "menu-list-textbtn"}) %></li>
             <% @categories.each do |category| %>
               <details>
                 <summary><%= category.name %></summary>
@@ -20,7 +21,9 @@
       </div>
     </section>
     <section class="projects-right">
-      <h1>最近の募集</h1>
+      <% if params[:tag] %>
+        <h1><%= @tag.name %>タグのついたプロジェクト</h1>
+      <% end %>
       <div class="projects-bord">
         <% @projects.each do |project| %>
           <div class="project-box">
@@ -36,15 +39,6 @@
                 <p><%= project.target %></p>
               </div>
             <% end %>
-          </div>
-        <% end %>
-        <% 10.times do %>
-          <div class="project-box">
-            <img src="/assets/image.png" alt="image" class="project-img">
-            <div class="project-content">
-              <h2>project title</h2>
-              <p>content</p>
-            </div>
           </div>
         <% end %>
       </div>

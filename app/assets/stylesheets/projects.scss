@@ -25,6 +25,30 @@
           li {
             padding-bottom: 20px;
           }
+          .menu-list-textbtn {
+            transition: 0.4s;
+            &:hover {
+              cursor: pointer;
+              opacity: 0.5;
+            }
+          }
+          summary {
+            transition: 0.4s;
+            &:hover {
+              cursor: pointer;
+              opacity: 0.5;
+            }
+          }
+          details {
+            padding-bottom: 24px;
+            li {
+              padding: 12px 0 0 16px;
+              transition: 0.4s;
+              &:hover {
+                opacity: 0.5;
+              }
+            }
+          }
           .list-btn {
             padding: 4px 8px;
             border-radius: 4px;
