@@ -41,17 +41,17 @@
       border: none;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
     }
+    .select {
+      background-color: $base-color-10;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+      font-size: 16px;
+      margin-right: 16px;
+      padding: 8px;
+    }
     .selects {
       display: flex;
-      .select {
-        background-color: $base-color-10;
-        border: none;
-        border-radius: 4px;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
-        font-size: 16px;
-        margin-right: 16px;
-        padding: 8px;
-      }
     }
     .user-list {
       background-color: $base-color-10;

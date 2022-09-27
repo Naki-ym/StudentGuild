@@ -14,7 +14,7 @@
       </div>
       <div class="form-item">
         <h2>カテゴリ</h2>
-        <%= f.collection_select :tag_category_id, @categories, :id, :name, {class: "select"} %>
+        <%= f.collection_select :tag_category_id, @categories, :id, :name, {}, {class: "select"} %>
       </div>
       <div class="btns">
         <%= f.submit "保存", class: "btn" %>
