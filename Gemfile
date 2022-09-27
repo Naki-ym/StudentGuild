@@ -39,6 +39,10 @@ gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
