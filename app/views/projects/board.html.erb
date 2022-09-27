@@ -8,9 +8,11 @@
             <% @categories.each do |category| %>
               <details>
                 <summary><%= category.name %></summary>
-                <% category.tags.each do |tag| %>
-                  <p><%= tag.name %></p>
-                <% end %>
+                <ul>
+                  <% category.tags.each do |tag| %>
+                    <li><%= link_to(tag.name, "/projects?tag=#{tag.id}") %></li>
+                  <% end %>
+                </ul>
               </details>
             <% end %>
           </ul>

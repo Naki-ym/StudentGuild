@@ -3,8 +3,14 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user
 
   def board
-    @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
     @categories = TagCategory.all
+    if params[:tag]
+      @tag = Tag.find_by(id: params[:tag].to_i)
+      @projects = @tag.projects(@current_user.id)
+      #@projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
+    else
+      @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
+    end
   end
 
   def myproject
