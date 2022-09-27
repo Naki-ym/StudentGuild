@@ -30,6 +30,15 @@ class ProjectsController < ApplicationController
     @tags       = Tag.all
   end
 
+  def dynamic_tag
+    if params[:project][:tag_category_id] != ""
+      @category = TagCategory.find_by(id: params[:project][:tag_category_id])
+      @tags = @category.tags
+    else
+      @tags = []
+    end
+  end
+
   def create
     @project = Project.new(
       user_id:     project_params["user_id"],
@@ -127,13 +136,6 @@ class ProjectsController < ApplicationController
     @project.is_deleted = true
     @project.save
     redirect_to("/myprojects")
-  end
-
-  def dynamic_tag
-    @category = TagCategory.find_by(id: params[:project][:tag_category_id])
-    @tags = @category.tags
-    p "--------------------------------------------"
-    p @tags.size
   end
 
   private
