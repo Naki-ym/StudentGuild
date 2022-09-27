@@ -5,8 +5,13 @@
         <div class="menu">
           <ul class="menu-list">
             <li><%= link_to("MyProject", "/myprojects", {class: "list-btn"}) %></li>
-            <% 20.times do %>
-              <li>aaaa</li>
+            <% @categories.each do |category| %>
+              <details>
+                <summary><%= category.name %></summary>
+                <% category.tags.each do |tag| %>
+                  <p><%= tag.name %></p>
+                <% end %>
+              </details>
             <% end %>
           </ul>
         </div>

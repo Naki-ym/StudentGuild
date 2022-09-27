@@ -34,10 +34,12 @@
       </div>
       <div class="form-item">
         <h2>タグ</h2>
-        <%= f.collection_select :tag_category_id, @categories, :id, :name, {selected: @tag.category.id},
-          {data: {remote: true, url: url_for(action: :dynamic_tag)}, class: "select"} %>
-        <div id="tag-select">
-          <%= select_tag "tag", options_from_collection_for_select(@tag.category.tags, :id, :name, { :selected => @tag.id }) %>
+        <div class="selects">
+          <%= f.collection_select :tag_category_id, @categories, :id, :name, {selected: @tag.category.id},
+            {data: {remote: true, url: url_for(action: :dynamic_tag)}, class: "select"} %>
+          <div id="tag-select">
+            <%= select_tag "tag", options_from_collection_for_select(@tag.category.tags, :id, :name, { :selected => @tag.id}), {class: "select"} %>
+          </div>
         </div>
       </div>
       <div class="btns">

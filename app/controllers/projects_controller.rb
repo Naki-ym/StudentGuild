@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def board
     @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
+    @categories = TagCategory.all
   end
 
   def myproject
