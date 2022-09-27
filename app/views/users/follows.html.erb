@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{@user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
   <div class="follows_followers_tab">
     <%= link_to("/users/#{@user.id}/follows", class: "target") do %>
       <p>フォロー <%= @following_users.count %></p>

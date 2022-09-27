@@ -7,6 +7,12 @@
 <% end %>
 
 <section class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{@user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
   <h1>ユーザー情報の編集</h1>
   <%= form_with model: @user, url: "/users/#{@user.id}/update" do |f| %>
     <div class="form">

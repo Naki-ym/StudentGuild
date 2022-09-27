@@ -1,4 +1,10 @@
 <div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:id]}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
   <div class="entry-list">
     <% if @entries.size > 0 %>
       <% @entries.each do |entry| %>

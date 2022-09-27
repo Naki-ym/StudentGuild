@@ -1,4 +1,17 @@
 <div class="wrapper">
+  <div class="page-top-btns">
+    <% if @project.user == @current_user %>
+      <%= link_to("/myprojects", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% else %>
+      <%= link_to("/projects", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% end %>
+  </div>
   <% if @project.image? %>
     <%= image_tag @project.image.url, class:"project-img" %>
   <% else %>
