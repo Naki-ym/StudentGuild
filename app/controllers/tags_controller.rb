@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   #管理者アカウントのみがアクセスできる
-  before_action :admin_user, {only: [:list]}
+  before_action :admin_user
   
   def list
     @tags = Tag.all
