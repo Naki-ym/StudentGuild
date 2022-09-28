@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     @user.icon = "icon.png"
 
     if @user.save
+      if @user.id == 1
+        @user.admin = true
+        @user.save
+      end
       session[:user_id] = @user.id
       flash[:notice]    = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
