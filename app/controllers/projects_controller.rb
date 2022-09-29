@@ -117,7 +117,7 @@ class ProjectsController < ApplicationController
     #応募済みでないか
     unless Entry.find_by(user_id: @current_user.id, project_id: params[:id], is_deleted: false)
       if @entry.save
-        redirect_to("/")
+        redirect_to("/projects/#{params[:id]}")
       else
         render("projects/entry_page")
       end
