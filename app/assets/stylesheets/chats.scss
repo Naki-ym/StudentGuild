@@ -70,7 +70,7 @@
             padding: 8px 12px;
             max-width: 100%;
             font-size: 16px;
-            background: $base-color-90;
+            background: $base-color-30;
             &:before {
               content: "";
               position: absolute;
@@ -78,7 +78,7 @@
               left: -16px;
               margin-top: -12px;
               border: 8px solid transparent;
-              border-right: 12px solid $base-color-90;
+              border-right: 12px solid $base-color-30;
             }
           }
         }
@@ -93,7 +93,7 @@
             padding: 8px 12px;
             max-width: 100%;
             font-size: 16px;
-            background: $base-color-30;
+            background: $main-color;
             &:before {
               content: "";
               position: absolute;
@@ -101,7 +101,7 @@
               right: -16px;
               margin-top: -12px;
               border: 8px solid transparent;
-              border-left: 12px solid $base-color-30;
+              border-left: 12px solid $main-color;
             }
           }
         }

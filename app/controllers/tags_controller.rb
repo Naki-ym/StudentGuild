@@ -3,12 +3,12 @@ class TagsController < ApplicationController
   before_action :admin_user
   
   def list
-    @tags = Tag.all
+    @tags = Tag.all.order(created_at: :asc)
   end
 
   def create_form
     @tag = Tag.new
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
   end
 
   def create
@@ -23,7 +23,7 @@ class TagsController < ApplicationController
   def edit
     @tag  = Tag.find_by(id: params[:id])
     @category = @tag.category
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
   end
 
   def update
@@ -42,7 +42,7 @@ class TagsController < ApplicationController
   end
 
   def category_list
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
   end
 
   def create_category_form

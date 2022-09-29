@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user
 
   def board
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
     if params[:tag]
       @tag = Tag.find_by(id: params[:tag].to_i)
       @projects = @tag.projects(@current_user.id)
@@ -25,9 +25,9 @@ class ProjectsController < ApplicationController
   end
 
   def create_project
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
     @project    = Project.new
-    @tags       = Tag.all
+    @tags       = Tag.all.order(created_at: :asc)
   end
 
   def dynamic_tag
@@ -54,8 +54,8 @@ class ProjectsController < ApplicationController
       @project_tag.save
       redirect_to("/myprojects")
     else
-      @categories = TagCategory.all
-      @tags = Tag.all
+      @categories = TagCategory.all.order(created_at: :asc)
+      @tags = Tag.all.order(created_at: :asc)
       render("projects/create_project")
     end
   end
@@ -66,9 +66,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @categories = TagCategory.all
+    @categories = TagCategory.all.order(created_at: :asc)
     @project    = Project.find_by(id: params[:id], is_deleted: false)
-    @tags       = Tag.all
+    @tags       = Tag.all.order(created_at: :asc)
     @tag        = @project.tags.first
   end
 
