@@ -20,7 +20,7 @@
         <div class="user-tile">
           <%= link_to("/users/#{user.id}") do %>
             <% if user.icon? %>
-              <%= image_tag post.user.icon.url, class:"usericon" %>
+              <%= image_tag user.icon.url, class:"usericon" %>
             <% else %>
               <img src="/assets/icon.png" alt="icon" class="usericon">
             <% end %>

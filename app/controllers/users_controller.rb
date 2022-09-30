@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def show
     @user            = User.find_by(id: params[:id])
-    @posts           = Post.where(user_id: @user.id, is_deleted: false)
+    @posts           = Post.where(user_id: @user.id, is_deleted: false).order(created_at: :desc)
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
     @roomusers       = RoomUser.where(user_id: @current_user, is_deleted: false)
