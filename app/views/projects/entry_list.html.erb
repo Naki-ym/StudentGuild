@@ -14,7 +14,7 @@
               <% if entry.user.icon? %>
                 <%= image_tag entry.user.icon.url, class:"usericon" %>
               <% else %>
-                <img src="/assets/icon.png" alt="icon" class="usericon">
+                <%= image_tag "icon.png", class: "usericon" %>
               <% end %>
               <p><%= entry.user.name %></p>
             <% end %>

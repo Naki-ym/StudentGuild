@@ -31,7 +31,7 @@
               <% if @current_user.icon? %>
                 <%= image_tag @current_user.icon.url, class:"header-usericon" %>
               <% else %>
-                <img src="/assets/icon.png" alt="icon" class="header-usericon">
+                <%= image_tag "icon.png", class: "header-usericon" %>
               <% end %>
             <% end %>
           </li>

@@ -3,7 +3,7 @@
     <% if @user.icon? %>
       <%= image_tag @user.icon.url, class:"big-usericon" %>
     <% else %>
-      <img src="/assets/icon.png" alt="icon" class="big-usericon">
+      <%= image_tag "icon.png", class: "big-usericon" %>
     <% end %>
     <div class="user-box-right">
       <h1><%= @user.name %></h1>
@@ -49,7 +49,7 @@
               <% if post.user.icon? %>
                 <%= image_tag post.user.icon.url, class:"usericon" %>
               <% else %>
-                <img src="/assets/icon.png" alt="icon" class="usericon">
+                <%= image_tag "icon.png", class: "usericon" %>
               <% end %>
               <p><%= post.user.name %></p>
             </div>
