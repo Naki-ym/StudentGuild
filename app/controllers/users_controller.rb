@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = nil
       flash[:notice]    = "ユーザーを削除しました"
-      redirect_to("/login")
+      redirect_to("/signup")
     else
       @error_message = "削除に失敗しました"
       render("users/#{@user.id}")
