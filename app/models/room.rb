@@ -3,5 +3,10 @@ class Room < ApplicationRecord
   validates :caption, {presence: true}
 
   has_many :room_users
+  has_many :users, through: :room_users
   has_many :messages
+
+  def joinning_members
+    return self.users
+  end
 end
