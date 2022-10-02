@@ -5,28 +5,26 @@
       <p>戻る</p>
     <% end %>
   </div>
-  <h1>カテゴリ一覧</h1>
-  <table>
-    <tr>
-      <th class="width10">id</th>
-      <th>name</th>
-      <th>size</th>
-      <th class="width20"><!-- ボタン設置 --></th>
-    </tr>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.id %></td>
-        <td><%= category.name %></td>
-        <td><%= category.tags.size %></td>
-        <td class="table-btns">
-          <%= link_to("/tags/categories/#{category.id}/edit") do %>
-            <i class="fas fa-pen"></i>
-          <% end %>
-        </td>
-      </tr>
+  <h1>カテゴリー一覧</h1>
+  <div class="table-top-area">
+    <%= link_to("/tags/categories/create", class: "text-btn") do %>
+      <i class="fas fa-plus"></i>
+      <p>カテゴリー追加</p>
     <% end %>
+    <div class="sort">
+      <i class="fas fa-sort"></i>
+      <%= select_tag "sort_tag_category", options_for_select(@sort_list, 1), {
+        data: {
+          remote: true,
+          url: url_for(action: :sort_tag_category)
+        }
+      }%>
+    </div>
+  </div>
+  <table id="sort-tag-category">
+    <%= render 'tags/tag_category_table', categories: @categories %>
   </table>
   <div class="btns">
-    <%= button_to "カテゴリ追加", "/tags/categories/create", {method: :get, class: "btn"} %>
+    <%= button_to "カテゴリー追加", "/tags/categories/create", {method: :get, class: "btn"} %>
   </div>
 </div>

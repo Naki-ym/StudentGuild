@@ -23,7 +23,6 @@ class TagsController < ApplicationController
     else
       @tags = Tag.all.order(created_at: :asc)
     end
-    p @tags
   end
 
   def create_form
@@ -64,6 +63,20 @@ class TagsController < ApplicationController
 
   def category_list
     @categories = TagCategory.all.order(created_at: :asc)
+    @sort_list = {"作成順（昇順）": 1, "作成順（降順）": 2, "名前順": 3}
+  end
+
+  def sort_tag_category
+    case params[:sort_tag_category].to_i
+    when 1
+      @categories = TagCategory.all.order(created_at: :asc)
+    when 2
+      @categories = TagCategory.all.order(created_at: :desc)
+    when 3
+      @categories = TagCategory.all.order(name: :asc, created_at: :asc)
+    else
+      @categories = TagCategory.all.order(created_at: :asc)
+    end
   end
 
   def create_category_form

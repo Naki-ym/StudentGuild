@@ -1,0 +1,18 @@
+<tr>
+  <th class="width10">id</th>
+  <th>name</th>
+  <th>size</th>
+  <th class="width20"><!-- ボタン設置 --></th>
+</tr>
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.name %></td>
+    <td><%= category.tags.size %></td>
+    <td class="table-btns">
+      <%= link_to("/tags/categories/#{category.id}/edit") do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
