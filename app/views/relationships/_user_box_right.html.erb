@@ -1,0 +1,33 @@
+<h1><%= @user.name %></h1>
+<div class="follow-box">
+  <%= link_to("/users/#{@user.id}/follows") do %>
+    <p>フォロー:<%= @following_users.count %></p>
+  <% end %>
+  <%= link_to("/users/#{@user.id}/followers") do %>
+    <p>フォロワー:<%= @follower_users.count %></p>
+  <% end %>
+</div>
+<div class="user-box-btnarea">
+  <% if @user.id == @current_user.id %>
+    <% if @user.admin? %>
+      <%= link_to("管理画面", "/admin", class: "btn") %>
+    <% end %>
+    <%= link_to("アカウント情報の編集", "/users/#{@current_user.id}/edit", class: "btn") %>
+    <%= link_to("", "/settings", class: "icon fas fa-cog", title: "設定") %>
+  <% else %>
+    <% if @current_user != @user %>
+      <div class="follow-btn">
+        <% if @current_user.following?(@user) %>
+          <%= link_to 'フォロー解除', "/users/#{@user.id}/relationships", method: :delete, remote: true , class: "btn" %>
+        <% else %>
+          <%= link_to 'フォロー', "/users/#{@user.id}/relationships", method: :POST, remote: true , class:"btn" %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @room %>
+      <%= link_to("", "/chats", class: "icon far fa-envelope") %>
+    <% else %>
+      <%= link_to("", "/chats/crate/indibidual/#{@user.id}", class: "icon far fa-envelope", method: :post) %>
+    <% end %>
+  <% end %>
+</div>
