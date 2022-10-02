@@ -10,7 +10,6 @@
   <%= form_with model: @post, url: "/posts/create" do |f| %>
     <%= f.text_area :content, class: "newpost-text", rows: "2" %>
     <div class="newpost-items">
-      <i class="far fa-image"></i>
       <%= f.submit "投稿", class: "btn" %>
     </div>
   <% end %>
@@ -60,12 +59,6 @@
                       <i class="fas fa-user-plus"></i>
                       <p>このユーザーをフォロー</p>
                     <% end %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to("#") do %>
-                    <i class="fas fa-ban"></i>
-                    <p>このユーザーをブロック</p>
                   <% end %>
                 </li>
               <% end %>
