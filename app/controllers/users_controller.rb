@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.icon = "icon.png"
 
-    if User.where(email: user_params["email"]).empty?
+    if User.where(email: user_params["email"], is_deleted: false).empty?
       if @user.save
         if @user.id == 1
           @user.admin = true
