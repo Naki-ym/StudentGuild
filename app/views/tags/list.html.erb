@@ -4,8 +4,18 @@
       <i class="fas fa-angle-left"></i>
       <p>戻る</p>
     <% end %>
+    <%= link_to("/tags/categories", class: "page-forward") do %>
+      <p>カテゴリ一覧</p>
+      <i class="fas fa-angle-right"></i>
+    <% end %>
   </div>
   <h1>タグ一覧</h1>
+  <div class="table-top-area">
+    <%= link_to("/tags/create", class: "text-btn") do %>
+      <i class="fas fa-plus"></i>
+      <p>タグ追加</p>
+    <% end %>
+  </div>
   <table>
     <tr>
       <th class="width10">id</th>
@@ -29,8 +39,4 @@
       </tr>
     <% end %>
   </table>
-  <div class="btns">
-    <%= button_to "タグ追加", "/tags/create", {method: :get, class: "btn"} %>
-    <%= button_to "カテゴリ", "/tags/categories", {method: :get, class: "btn"}%>
-  </div>
 </div>
