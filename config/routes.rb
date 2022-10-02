@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   post "tags/categories/create"      => "tags#create_category"
   post "tags/categories/:id/delete"  => "tags#category_delete"
   post "tags/:id/delete"             => "tags#delete"
+
+  match "sort_tag", to: 'tags#sort_tag', via: [:get]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

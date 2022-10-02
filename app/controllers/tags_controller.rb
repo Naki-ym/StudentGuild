@@ -4,6 +4,26 @@ class TagsController < ApplicationController
   
   def list
     @tags = Tag.all.order(created_at: :asc)
+    #@tags = Tag.all.order(created_at: :desc)
+    #@tags = Tag.all.order(tag_category_id: :asc, created_at: :asc)
+    #@tags = Tag.all.order(name: :asc, created_at: :asc)
+    @sort_list = {"作成順（昇順）": 1, "作成順（降順）": 2, "カテゴリ順": 3, "名前順": 4}
+  end
+
+  def sort_tag
+    case params[:sort_tag].to_i
+    when 1
+      @tags = Tag.all.order(created_at: :asc)
+    when 2
+      @tags = Tag.all.order(created_at: :desc)
+    when 3
+      @tags = Tag.all.order(tag_category_id: :asc, created_at: :asc)
+    when 4
+      @tags = Tag.all.order(name: :asc, created_at: :asc)
+    else
+      @tags = Tag.all.order(created_at: :asc)
+    end
+    p @tags
   end
 
   def create_form

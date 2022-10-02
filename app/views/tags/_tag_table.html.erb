@@ -1,0 +1,21 @@
+<tr>
+  <th class="width10">id</th>
+  <th>name</th>
+  <th>category</th>
+  <th class="width20"><!-- ボタン設置 --></th>
+</tr>
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.id %></td>
+    <td><%= tag.name %></td>
+    <td><%= tag.category.name %></td>
+    <td class="table-btns">
+      <%= link_to("/tags/#{tag.id}/edit") do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+      <%= link_to("/tags/#{tag.id}/delete", method: :post) do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
