@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   post "logout"  => "users#logout"
   post "signup"  => "users#create"
 
-  get "users/:id"          => "users#show"
-  get "users/:id/edit"     => "users#edit"
-  patch "users/:id/update" => "users#update"
-  post "users/:id/delete"  => "users#delete"
+  get "users/:id"               => "users#show"
+  get "users/:id/edit"          => "users#edit"
+  get "users/:id/edit/pass"     => "users#edit_password"
+  patch "users/:id/update"      => "users#update"
+  patch "users/:id/update/pass" => "users#update_password"
+  post "users/:id/delete"       => "users#delete"
 
   get "users/:id/follows"          => "users#follows"
   get "users/:id/followers"        => "users#followers"

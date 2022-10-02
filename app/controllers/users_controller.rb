@@ -76,6 +76,12 @@ class UsersController < ApplicationController
     @email = @user.email
   end
 
+  def edit_password
+    @user  = User.find_by(id: params[:id])
+    @name  = @user.name
+    @email = @user.email
+  end
+
   def update
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
@@ -83,8 +89,28 @@ class UsersController < ApplicationController
       redirect_to("/users/#{@user.id}/")
     else
       @name  = @user.name
-      @email = @user.email
       render("users/edit")
+    end
+  end
+
+  def update_password
+    @user = User.find_by(id: params[:id])
+    if @user.authenticate(password_params["old_password"])
+      if password_params["password"] == password_params["password_check"]
+        if @user.update(password: password_params["password"])
+          flash[:notice] = "変更を保存しました"
+          redirect_to("/users/#{@user.id}/")
+        else
+          @error_message = "変更に失敗しました"
+          render("users/edit_password")
+        end
+      else
+        @error_message = "新しいパスワードと確認用の新しいパスワードが異なります"
+        render("users/edit_password")
+      end
+    else
+      @error_message = "現在のパスワードが正しくありません"
+      render("users/edit_password")
     end
   end
 
@@ -139,5 +165,8 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :icon, :icon_cache)
+  end
+  def password_params
+    params.require(:user).permit(:old_password, :password, :password_check)
   end
 end
