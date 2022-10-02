@@ -25,7 +25,7 @@
       </div>
     <% end %>
     <% if @user.connected?(@current_user) %>
-      <%= link_to("", "/chats", class: "icon far fa-envelope") %>
+      <%= link_to("", "/chats/#{@user.connected_individual_room(@current_user)[0].id}", class: "icon far fa-envelope") %>
     <% else %>
       <%= link_to("", "/chats/crate/indibidual/#{@user.id}", class: "icon far fa-envelope", method: :post) %>
     <% end %>

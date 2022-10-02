@@ -45,7 +45,7 @@ class User < ApplicationRecord
     end
   end
 
-  #所属している部屋を返す
+  #所属している全ての個人チャットを返す
   def joinning_individual_rooms
     rooms = self.rooms.where(is_group_chat: false)
     return rooms
@@ -68,5 +68,14 @@ class User < ApplicationRecord
     if user_ids.include?(current_user.id)
       true
     end
+  end
+
+  #その相手と個人チャットしているときそのidを返す
+  def connected_individual_room(current_user)
+    #所属の部屋を取得
+    user_rooms         = self.rooms.where(is_group_chat: false)
+    current_user_rooms = current_user.rooms.where(is_group_chat: false)
+    room = user_rooms & current_user_rooms
+    return room
   end
 end

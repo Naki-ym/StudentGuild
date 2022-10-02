@@ -21,6 +21,9 @@
     margin: 0 10px 15px;
     padding: 10px;
     overflow: auto; 
+    .active {
+      background-color: $base-color-30;
+    }
     ul {
       border-bottom: solid 1px $accent-color-line;
       padding: 15px;

@@ -2,12 +2,21 @@
   <div class="chat-wrapper">
     <li class="room-li">
       <% @rooms.each do |room| %>
-        <ul>
-          <%= link_to("/chats/#{room.id}") do %>
-            <h2><%= room.name %></h2>
-            <p><%= get_newest_message(room.id) %></p>
-          <% end %>
-        </ul>
+        <% if room.id == params[:id].to_i %>
+          <ul class="active">
+            <%= link_to("/chats/#{room.id}") do %>
+              <h2><%= room.name %></h2>
+              <p><%= get_newest_message(room.id) %></p>
+            <% end %>
+          </ul>
+        <% else %>
+          <ul>
+            <%= link_to("/chats/#{room.id}") do %>
+              <h2><%= room.name %></h2>
+              <p><%= get_newest_message(room.id) %></p>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
       <ul>
         <%= link_to("/chats/create") do %>
