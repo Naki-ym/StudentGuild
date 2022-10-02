@@ -16,6 +16,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to("/tags")
     else
+      @categories = TagCategory.all.order(created_at: :asc)
       render("tags/create_form")
     end
   end
