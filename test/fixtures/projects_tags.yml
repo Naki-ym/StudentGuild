@@ -8,9 +8,9 @@
 one:
   id: 1
   project_id: 1
-  tag_id: 3
+  tag_id: 6
 
 two:
   id: 2
   project_id: 2
-  tag_id: 2
+  tag_id: 7

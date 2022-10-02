@@ -1,8 +1,1 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  id: 1
-  name: MyText
-  caption: MyText
-  is_group_chat: false
-  is_deleted: false

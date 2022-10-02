@@ -7,19 +7,19 @@
 one:
   id: 1
   user_id: 1
-  name: aaa
-  overview: aaaaa
-  target: aaa
-  detail: aaaaaaaa
+  name: 【映像作品】MV作成
+  overview: 高校生バンドMV作成
+  target: 高校生
+  detail: ○○高校の軽音楽部でバンドをしている者です。バンドでMVを制作したいということになったので募集します。
   is_published: true
   image: image.png
 
 two:
   id: 2
   user_id: 2
-  name: bbb
-  overview: bbbbb
-  target: bbb
-  detail: bbbbbbbbbbb
+  name: 【新規SNSサービス】SEO対策のできる人を募集中
+  overview: 現在開発中の新規SNSサービスのSEO対策をやってくれる方を募集します。
+  target: 高校生
+  detail: よろしくお願いします。
   is_published: true
   image: image.png

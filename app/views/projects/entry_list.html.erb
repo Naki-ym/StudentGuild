@@ -9,14 +9,21 @@
     <% if @entries.size > 0 %>
       <% @entries.each do |entry| %>
         <div class="entry-box">
-          <div class="entry-user-box">
-            <%= link_to("/users/#{entry.user.id}") do %>
-              <% if entry.user.icon? %>
-                <%= image_tag entry.user.icon.url, class:"usericon" %>
-              <% else %>
-                <%= image_tag "icon.png", class: "usericon" %>
+          <div class="entry-box-top">
+            <div class="entry-user-box">
+              <%= link_to("/users/#{entry.user.id}") do %>
+                <% if entry.user.icon? %>
+                  <%= image_tag entry.user.icon.url, class:"usericon" %>
+                <% else %>
+                  <%= image_tag "icon.png", class: "usericon" %>
+                <% end %>
+                <p><%= entry.user.name %></p>
               <% end %>
-              <p><%= entry.user.name %></p>
+            </div>
+            <% if entry.user.connected?(@current_user) %>
+              <%= link_to("", "/chats/#{entry.user.connected_individual_room(@current_user)[0].id}", class: "icon far fa-envelope") %>
+            <% else %>
+              <%= link_to("", "/chats/crate/indibidual/#{entry.user.id}", class: "icon far fa-envelope", method: :post) %>
             <% end %>
           </div>
           <div class="entry-content">
@@ -24,7 +31,6 @@
           </div>
         </div>
       <% end %>
-    </p>
     <% else %>
       <p>応募はまだありません</p>
     <% end %>

@@ -6,10 +6,10 @@
 #
 one:
   id: 1
-  content: aaaaaaaaaaa
+  content: "アカウント作りました～"
   user_id: 1
 
 two: 
   id: 2
-  content: bbbbbbbbbbbbbbb
+  content: "今日から始めます、よろしくお願いします！"
   user_id: 2

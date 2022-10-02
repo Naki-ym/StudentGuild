@@ -6,8 +6,28 @@
 #
 one:
   id: 1
-  name: "プログラミング"
+  name: "IT・プログラミング"
 
 two:
   id: 2
-  name: "動画編集"
+  name: "写真・イラスト"
+
+three:
+  id: 3
+  name: "デザイン"
+
+four:
+  id: 4
+  name: "動画・アニメーション"
+
+five:
+  id: 5
+  name: "マーケティング・Web集客"
+
+six:
+  id: 6
+  name: "音楽制作"
+
+seven:
+  id: 7
+  name: "ライティング"
