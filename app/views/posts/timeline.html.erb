@@ -6,75 +6,82 @@
   <% end %>
 <% end %>
 
-<div class="tl-post-list">
-  <%= form_with model: @post, url: "/posts/create" do |f| %>
-    <%= f.text_area :content, class: "newpost-text", rows: "2" %>
-    <div class="newpost-items">
-      <%= f.submit "投稿", class: "btn" %>
-    </div>
-  <% end %>
-
-  <section class="post-list">
-    <% @posts.each do |post| %>
-      <div class="post-box">
-        <div class="post-top">
-          <%= link_to("/users/#{post.user.id}") do %>
-            <div class="post-user-box">
-              <% if post.user.icon? %>
-                <%= image_tag post.user.icon.url, class:"usericon" %>
-              <% else %>
-                <%= image_tag "icon.png", class: "usericon" %>
-              <% end %>
-              <p><%= post.user.name %></p>
-            </div>
-          <% end %>
-          <a href="" class="md-btn" title="メニュー" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>
-        </div>
-        <div id="modal<%= post.id %>" class="modal">
-          <div class="md-overlay md-close"></div>
-          <div class="md-contents">
-            <ul class="md-list">
-              <% if post.user_id == @current_user.id %>
-                <li>
-                  <%= link_to("/posts/#{post.id}/edit") do %>
-                    <i class="far fa-edit"></i>
-                    <p>投稿内容の編集</p>
-                  <% end %>
-                </li>
-                <li class="redtext">
-                  <%= link_to("/posts/#{post.id}/delete", method: :post) do %>
-                    <i class="far fa-trash-alt"></i>
-                    <p>この投稿を削除</p>
-                  <% end %>
-                </li>
-              <% else %>
-                <li>
-                  <% if @current_user.following?(post.user) %>
-                    <%= link_to("/users/#{post.user.id}/relationships", method: :delete) do %>
-                      <i class="fas fa-user-plus"></i>
-                      <p>このユーザーのフォローを解除</p>
-                    <% end %>
-                  <% else %>
-                    <%= link_to("/users/#{post.user.id}/relationships", method: :POST) do %>
-                      <i class="fas fa-user-plus"></i>
-                      <p>このユーザーをフォロー</p>
-                    <% end %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <%= link_to("/posts/#{post.id}") do %>
-          <div class="post-content">
-            <p><%= simple_format(post.content) %></p>
-          </div>
-        <% end %>
-        <div class="post-items" id="favorite_<%= post.id %>">
-          <%= render 'posts/post_items', post: post %>
-        </div>
+<div class="tl-wrapper">
+  <section class="tl-left">
+    <ul>
+      <li><%= link_to("フォローしているユーザー", "/timeline", {class: "menu-list-textbtn"}) %></li>
+      <li><%= link_to("すべてのユーザー", "/timeline?search=all", {class: "menu-list-textbtn"}) %></li>
+    </ul>
+  </section>
+  <section class="tl-post-list">
+    <%= form_with model: @post, url: "/posts/create" do |f| %>
+      <%= f.text_area :content, class: "newpost-text", rows: "2" %>
+      <div class="newpost-items">
+        <%= f.submit "投稿", class: "btn" %>
       </div>
     <% end %>
+    <div class="post-list">
+      <% @posts.each do |post| %>
+        <div class="post-box">
+          <div class="post-top">
+            <%= link_to("/users/#{post.user.id}") do %>
+              <div class="post-user-box">
+                <% if post.user.icon? %>
+                  <%= image_tag post.user.icon.url, class:"usericon" %>
+                <% else %>
+                  <%= image_tag "icon.png", class: "usericon" %>
+                <% end %>
+                <p><%= post.user.name %></p>
+              </div>
+            <% end %>
+            <a href="" class="md-btn" title="メニュー" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>
+          </div>
+          <div id="modal<%= post.id %>" class="modal">
+            <div class="md-overlay md-close"></div>
+            <div class="md-contents">
+              <ul class="md-list">
+                <% if post.user_id == @current_user.id %>
+                  <li>
+                    <%= link_to("/posts/#{post.id}/edit") do %>
+                      <i class="far fa-edit"></i>
+                      <p>投稿内容の編集</p>
+                    <% end %>
+                  </li>
+                  <li class="redtext">
+                    <%= link_to("/posts/#{post.id}/delete", method: :post) do %>
+                      <i class="far fa-trash-alt"></i>
+                      <p>この投稿を削除</p>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <% if @current_user.following?(post.user) %>
+                      <%= link_to("/users/#{post.user.id}/relationships", method: :delete) do %>
+                        <i class="fas fa-user-plus"></i>
+                        <p>このユーザーのフォローを解除</p>
+                      <% end %>
+                    <% else %>
+                      <%= link_to("/users/#{post.user.id}/relationships", method: :POST) do %>
+                        <i class="fas fa-user-plus"></i>
+                        <p>このユーザーをフォロー</p>
+                      <% end %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <%= link_to("/posts/#{post.id}") do %>
+            <div class="post-content">
+              <p><%= simple_format(post.content) %></p>
+            </div>
+          <% end %>
+          <div class="post-items" id="favorite_<%= post.id %>">
+            <%= render 'posts/post_items', post: post %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </section>
 </div>
 

@@ -4,9 +4,34 @@
 @import "_usericon";
 @import "_variable";
 
-.tl-post-list {
+.tl-wrapper {
+  display: flex;
   margin: 0 auto;
-  width: 50%;
+  margin-left: 16%;
+  margin-right: 24%;
+  width: 60%;
+  .tl-left {
+    flex: 1;
+    padding-right: 24px;
+    ul {
+      border-top: solid 1px $accent-color-line;
+      border-right: solid 1px $accent-color-line;
+      border-left: solid 1px $accent-color-line;
+      font-size: 16px;
+      li {
+        border-bottom: solid 1px $accent-color-line;
+        a {
+          display: block;
+          height: 100%;
+          padding: 16px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.tl-post-list {
+  flex: 2;
   form {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 4px;

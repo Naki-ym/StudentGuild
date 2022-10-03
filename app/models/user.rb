@@ -38,6 +38,10 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  def followings
+    return self.following_user
+  end
+
   #管理者アカウントならtrue
   def admin?
     if self.admin == true
