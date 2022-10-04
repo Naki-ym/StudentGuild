@@ -1,4 +1,6 @@
 class Entry < ApplicationRecord
+  include Discard::Model
+
   validates :user_id, {presence: true}
   validates :project_id, {presence: true}
   validates :content, {presence: true}
@@ -7,6 +9,6 @@ class Entry < ApplicationRecord
   belongs_to :project
 
   def user
-    return User.find_by(id: self.user_id, is_deleted: false)
+    return User.kept.find_by(id: self.user_id)
   end
 end

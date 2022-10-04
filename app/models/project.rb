@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  include Discard::Model
+
   validates :user_id, {presence: true}
   validates :name, {presence: true, length: {maximum: 200}}
   validates :overview, {presence: true, length: {maximum: 200}}
@@ -13,6 +15,6 @@ class Project < ApplicationRecord
   mount_uploader :image, ProjectImageUploader
 
   def user
-    return User.find_by(id: self.user_id, is_deleted: false)
+    return User.kept.find_by(id: self.user_id)
   end
 end

@@ -8,14 +8,13 @@ class FavoritesController < ApplicationController
   end
 
   def delete
-    @favorite = Favorite.find_by(user_id: @current_user.id, post_id: params[:id], is_deleted: false)
-    @favorite.is_deleted = true
-    @favorite.save
+    @favorite = Favorite.find_by(user_id: @current_user.id, post_id: params[:id])
+    @favorite.destroy
   end
 
   private
 
   def post_params
-    @post = Post.find_by(id: params[:id], is_deleted: false)
+    @post = Post.find_by(id: params[:id])
   end 
 end

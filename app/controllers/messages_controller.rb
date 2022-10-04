@@ -7,14 +7,6 @@ class MessagesController < ApplicationController
     if @msg.save
       redirect_to("/chats/#{params[:id]}")
     else
-      # @current_room = Room.find_by(id: params[:id], is_deleted: false)
-      # @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
-      # @rooms = []
-      # @room_users.each do |room_user|
-      #   @room = Room.find_by(id: room_user.room_id, is_deleted: false)
-      #   @rooms << @room
-      # end
-      # render("chats/room")
       redirect_to("/chats/#{params[:id]}")
     end
   end

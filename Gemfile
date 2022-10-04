@@ -43,6 +43,9 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'net-smtp'
 
+#論理削除
+gem 'discard', '~> 1.2'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

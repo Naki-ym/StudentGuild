@@ -8,40 +8,33 @@ one:
   id: 1
   name: "モバイルアプリ開発"
   tag_category_id: 1
-  is_deleted: false
 
 two:
   id: 2
   name: "Webアプリ開発"
   tag_category_id: 1
-  is_deleted: false
 
 three:
   id: 3
   name: "写真撮影・素材提供"
   tag_category_id: 2
-  is_deleted: false
 
 four:
   id: 4
   name: "画像の編集・加工"
   tag_category_id: 2
-  is_deleted: false
 
 five:
   id: 5
   name: "ロゴデザイン"
   tag_category_id: 3
-  is_deleted: false
 
 six:
   id: 6
   name: "動画編集"
   tag_category_id: 4
-  is_deleted: false
 
 seven:
   id: 7
   name: "SEO対策"
   tag_category_id: 5
-  is_deleted: false

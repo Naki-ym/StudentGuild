@@ -10,11 +10,11 @@ class PostsController < ApplicationController
       @current_user.followings.each do |user|
         @followings_id << user.id
       end
-      @posts = Post.where(user_id: @followings_id, is_deleted: false).order(created_at: :desc)
+      @posts = Post.kept.where(user_id: @followings_id).order(created_at: :desc)
     when "all"
-      @posts = Post.where(is_deleted: false).order(created_at: :desc)
+      @posts = Post.kept.order(created_at: :desc)
     else
-      @posts = Post.where(is_deleted: false).order(created_at: :desc)
+      @posts = Post.kept.order(created_at: :desc)
     end
   end
   def create
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to("/timeline")
     else
-      @posts = Post.where(is_deleted: false).order(created_at: :desc)
+      @posts = Post.kept.where(user_id: @followings_id).order(created_at: :desc)
       render("posts/timeline")
     end
   end
@@ -52,17 +52,15 @@ class PostsController < ApplicationController
     @favorites = Favorite.where(post_id: @post.id)
     
     @favorites.each do |favorite|
-      favorite.is_deleted = true
-      favorite.save
+      favorite.destroy
     end
-    @post.is_deleted = true
-    if @post.save
+    if @post.discard
       flash[:notice] = "投稿を削除しました"
       redirect_to("/timeline")
     else
       currentpath = request.path_info
-      if currentpath = "posts/timeline"
-        @posts = Post.where(is_deleted: false).order(created_at: :desc)
+      if currentpath == "posts/timeline"
+        @posts = Post.kept.order(created_at: :desc)
         render("posts/timeline")
       else
         render("posts/show")

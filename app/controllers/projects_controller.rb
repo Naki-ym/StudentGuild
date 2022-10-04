@@ -3,31 +3,30 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user
 
   def board
-    @categories = TagCategory.all.order(created_at: :asc)
+    @categories = TagCategory.kept.order(created_at: :asc)
     if params[:tag]
       @tag = Tag.find_by(id: params[:tag].to_i)
       @projects = @tag.projects(@current_user.id)
-      #@projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
     else
-      @projects = Project.where.not(user_id: @current_user.id).where(is_published: true, is_deleted: false).order(created_at: :desc)
+      @projects = Project.kept.where.not(user_id: @current_user.id).where(is_published: true).order(created_at: :desc)
     end
   end
 
   def myproject
-    @allmyprojects = Project.where(user_id: @current_user.id, is_deleted: false).order(created_at: :desc)
+    @allmyprojects = Project.kept.where(user_id: @current_user.id).order(created_at: :desc)
     @projects      = @allmyprojects
 
     if params[:is_published] == "true"
-      @projects = Project.where(user_id: @current_user.id, is_published: true, is_deleted: false).order(created_at: :desc)
+      @projects = Project.kept.where(user_id: @current_user.id, is_published: true).order(created_at: :desc)
     elsif params[:is_published] == "false"
-      @projects = Project.where(user_id: @current_user.id, is_published: false, is_deleted: false).order(created_at: :desc)
+      @projects = Project.kept.where(user_id: @current_user.id, is_published: false).order(created_at: :desc)
     end
   end
 
   def create_project
-    @categories = TagCategory.all.order(created_at: :asc)
+    @categories = TagCategory.kept.order(created_at: :asc)
     @project    = Project.new
-    @tags       = Tag.all.order(created_at: :asc)
+    @tags       = Tag.kept.all.order(created_at: :asc)
   end
 
   def dynamic_tag
@@ -54,26 +53,26 @@ class ProjectsController < ApplicationController
       @project_tag.save
       redirect_to("/myprojects")
     else
-      @categories = TagCategory.all.order(created_at: :asc)
+      @categories = TagCategory.kept.order(created_at: :asc)
       @tags = Tag.all.order(created_at: :asc)
       render("projects/create_project")
     end
   end
 
   def show
-    @project = Project.find_by(id: params[:id], is_deleted: false)
-    @entry   = Entry.find_by(user_id: @current_user.id, project_id: params[:id], is_deleted: false)
+    @project = Project.kept.find_by(id: params[:id])
+    @entry   = Entry.kept.find_by(user_id: @current_user.id, project_id: params[:id])
   end
 
   def edit
-    @categories = TagCategory.all.order(created_at: :asc)
-    @project    = Project.find_by(id: params[:id], is_deleted: false)
-    @tags       = Tag.all.order(created_at: :asc)
+    @categories = TagCategory.kept.order(created_at: :asc)
+    @project    = Project.kept.find_by(id: params[:id])
+    @tags       = Tag.kept.all.order(created_at: :asc)
     @tag        = @project.tags.first
   end
 
   def update
-    @project = Project.find_by(id: params[:id], is_deleted: false)
+    @project = Project.kept.find_by(id: params[:id])
     @project.name        = project_params["name"]
     @project.overview    = project_params["overview"]
     @project.target      = project_params["target"]
@@ -93,7 +92,7 @@ class ProjectsController < ApplicationController
   end
 
   def publish
-    @project              = Project.find_by(id: params[:id], is_deleted: false)
+    @project              = Project.kept.find_by(id: params[:id])
     @project.is_published = true
 
     @project.save
@@ -101,40 +100,40 @@ class ProjectsController < ApplicationController
   end
 
   def unpublish
-    @project              = Project.find_by(id: params[:id], is_deleted: false)
+    @project              = Project.kept.find_by(id: params[:id])
     @project.is_published = false
     @project.save
     redirect_to("/myprojects")
   end
 
   def entry_page
-    @project = Project.find_by(id: params[:id], is_deleted: false)
+    @project = Project.kept.find_by(id: params[:id])
     @entry   = Entry.new
   end
 
   def entry
     @entry = Entry.new(entry_params)
     #応募済みでないか
-    unless Entry.find_by(user_id: @current_user.id, project_id: params[:id], is_deleted: false)
+    unless Entry.kept.find_by(user_id: @current_user.id, project_id: params[:id])
       if @entry.save
         redirect_to("/projects/#{params[:id]}")
       else
         render("projects/entry_page")
       end
     else
-      @project = Project.find_by(id: params[:id], is_deleted: false)
+      @project = Project.kept.find_by(id: params[:id])
       render("projects/entry_page")
     end
   end
 
   def entry_list
-    @entries = Entry.where(project_id: params[:id], is_deleted: false)
+    @entries = Entry.kept.where(project_id: params[:id])
   end
 
   def delete
-    @project            = Project.find_by(id: params[:id])
-    @project.is_deleted = true
-    @project.save
+    #このプロジェクトへの応募も削除
+    @project = Project.find_by(id: params[:id])
+    @project.discard
     redirect_to("/myprojects")
   end
 

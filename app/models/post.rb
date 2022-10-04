@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Discard::Model
+
   validates :content, {presence: true, length: {maximum: 200}}
   validates :user_id, {presence: true}
 
@@ -6,9 +8,9 @@ class Post < ApplicationRecord
   has_many :favorites
 
   def user
-    return User.find_by(id: self.user_id, is_deleted: false)
+    return User.kept.find_by(id: self.user_id)
   end
   def favorites
-    return Favorite.where(post_id: self.id, is_deleted: false)
+    return Favorite.where(post_id: self.id)
   end
 end

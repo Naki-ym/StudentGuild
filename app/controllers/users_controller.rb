@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.icon = "icon.png"
 
-    if User.where(email: user_params["email"], is_deleted: false).empty?
+    if User.kept.where(email: user_params["email"]).empty?
       if @user.save
         if @user.id == 1
           @user.admin = true
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:email], is_deleted: false)
+    @user = User.kept.find_by(email: params[:email])
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
@@ -55,35 +55,35 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user            = User.find_by(id: params[:id])
-    @posts           = Post.where(user_id: @user.id, is_deleted: false).order(created_at: :desc)
+    @user            = User.kept.find_by(id: params[:id])
+    @posts           = Post.kept.where(user_id: @user.id).order(created_at: :desc)
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
-    @roomusers       = RoomUser.where(user_id: @current_user, is_deleted: false)
+    @roomusers       = RoomUser.kept.where(user_id: @current_user)
     @room            = nil
 
     @roomusers.each do |roomuser|
-      @my_roomusers = RoomUser.find_by(room_id: roomuser.room_id, user_id:@user.id, is_deleted: false)
+      @my_roomusers = RoomUser.kept.find_by(room_id: roomuser.room_id, user_id:@user.id)
       if @my_roomusers
-        @room = Room.find_by(id: @my_roomusers.room_id, is_group_chat: false, is_deleted: false)
+        @room = Room.kept.find_by(id: @my_roomusers.room_id, is_group_chat: false)
       end
     end
   end
 
   def edit
-    @user  = User.find_by(id: params[:id])
+    @user  = User.kept.find_by(id: params[:id])
     @name  = @user.name
     @email = @user.email
   end
 
   def edit_password
-    @user  = User.find_by(id: params[:id])
+    @user  = User.kept.find_by(id: params[:id])
     @name  = @user.name
     @email = @user.email
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = User.kept.find_by(id: params[:id])
     if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
       redirect_to("/users/#{@user.id}/")
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    @user = User.find_by(id: params[:id])
+    @user = User.kept.find_by(id: params[:id])
     if @user.authenticate(password_params["old_password"])
       if password_params["password"] == password_params["password_check"]
         if @user.update(password: password_params["password"])
@@ -115,24 +115,20 @@ class UsersController < ApplicationController
   end
 
   def delete
-    @user      = User.find_by(id: params[:id])
-    @posts     = Post.where(user_id: @user.id)
+    @user      = User.kept.find_by(id: params[:id])
+    @posts     = Post.kept.where(user_id: @user.id)
     @favorites = Favorite.where(user_id: @user.id)
     @favorites.each do |favorite|
-      favorite.is_deleted = true
-      favorite.save
+      favorite.destroy
     end
     @posts.each do |post|
       @favorites = Favorite.where(post_id: post.id)
       @favorites.each do |favorite|
-        favorite.is_deleted = true
-        favorite.save
+        favorite.destroy
       end
-      post.is_deleted = true
-      post.save
+      post.discard
     end
-    @user.is_deleted = true
-    if @user.save
+    if @user.discard
       session[:user_id] = nil
       flash[:notice]    = "ユーザーを削除しました"
       redirect_to("/signup")
@@ -146,14 +142,14 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @user   = User.find_by(id: params[:id])
+    @user   = User.kept.find_by(id: params[:id])
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
     @users = @user.following_user.reverse_order
   end
   
   def followers
-    @user   = User.find_by(id: params[:id])
+    @user   = User.kept.find_by(id: params[:id])
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
     @users = @user.follower_user.reverse_order

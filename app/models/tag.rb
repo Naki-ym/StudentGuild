@@ -1,4 +1,6 @@
 class Tag < ApplicationRecord
+  include Discard::Model
+
   validates :name, {presence: true, length: {maximum: 30}}
 
   belongs_to :tag_category
@@ -12,7 +14,7 @@ class Tag < ApplicationRecord
     project_tags = ProjectsTag.where(tag_id: self.id)
     projects     = []
     project_tags.each do |project_tag|
-      tag_projects = Project.where(id: project_tag.project_id, is_published: true, is_deleted: false).where.not(user_id: user_id)
+      tag_projects = Project.kept.where(id: project_tag.project_id, is_published: true).where.not(user_id: user_id)
       tag_projects.each do |tag_project|
         projects.push(tag_project)
       end

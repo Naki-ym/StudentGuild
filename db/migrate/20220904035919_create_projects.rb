@@ -7,7 +7,6 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.string :target, null: false
       t.text :detail, null: false
       t.boolean :is_published, null: false, default: false
-      t.boolean :is_deleted, null: false, default: false
 
       t.timestamps
     end

@@ -3,29 +3,29 @@ class ChatsController < ApplicationController
   before_action :authenticate_user
   
   def top
-    @room_users = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+    @room_users = RoomUser.kept.where(user_id: @current_user.id)
     @rooms      = []
 
     @room_users.each do |room_user|
-      @room = Room.find_by(id: room_user.room_id, is_deleted: false)
+      @room = Room.kept.find_by(id: room_user.room_id)
       @rooms << @room
     end
   end
   def create
     @room        = Room.new
-    @myroomusers = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+    @myroomusers = RoomUser.kept.where(user_id: @current_user.id)
     @rooms       = []
     @roomusers   = []
     @users       = []
 
     @myroomusers.each do |myroomuser|
-      myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
+      myroom = Room.kept.find_by(id: myroomuser.room_id, is_group_chat: false)
       if myroom
         @rooms << myroom
       end
     end
     @rooms.each do |room|
-      roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
+      roomuser = RoomUser.kept.where.not(user_id: @current_user.id).find_by(room_id: room.id)
       if roomuser
         @roomusers << roomuser
       end
@@ -38,15 +38,15 @@ class ChatsController < ApplicationController
     end
   end
   def room
-    @current_room = Room.find_by(id: params[:id], is_deleted: false)
-    @room_users   = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+    @current_room = Room.kept.find_by(id: params[:id])
+    @room_users   = RoomUser.kept.where(user_id: @current_user.id)
     @rooms        = []
 
     @room_users.each do |room_user|
-      @room = Room.find_by(id: room_user.room_id, is_deleted: false)
+      @room = Room.kept.find_by(id: room_user.room_id)
       @rooms << @room
     end
-    @messages = Message.where(room_id: params[:id], is_deleted: false)
+    @messages = Message.kept.where(room_id: params[:id])
   end
   def edit
   end
@@ -57,7 +57,7 @@ class ChatsController < ApplicationController
     if @room.save
       @members = [@current_user]
       @users_id.each do |user_id|
-        new_member = User.find_by(id: user_id, is_deleted: false)
+        new_member = User.kept.find_by(id: user_id)
         @members << new_member
       end
       @members.each do |member|
@@ -69,24 +69,24 @@ class ChatsController < ApplicationController
       redirect_to("/chats/#{@room.id}")
     else
       @error_message = "失敗しました"
-      @myroomusers = RoomUser.where(user_id: @current_user.id, is_deleted: false)
+      @myroomusers = RoomUser.kept.where(user_id: @current_user.id)
       @rooms = []
       @roomusers = []
       @users = []
       @myroomusers.each do |myroomuser|
-        myroom = Room.find_by(id: myroomuser.room_id, is_group_chat: false, is_deleted: false)
+        myroom = Room.kept.find_by(id: myroomuser.room_id, is_group_chat: false)
         if myroom
           @rooms << myroom
         end
       end
       @rooms.each do |room|
-        roomuser = RoomUser.where.not(user_id: @current_user.id).find_by(room_id: room.id, is_deleted: false)
+        roomuser = RoomUser.kept.where.not(user_id: @current_user.id).find_by(room_id: room.id)
         if roomuser
           @roomusers << roomuser
         end
       end
       @roomusers.each do |roomuser|
-        user = User.find_by(id: roomuser.user_id)
+        user = User.kept.find_by(id: roomuser.user_id)
         if user
           @users << user
         end
@@ -95,7 +95,7 @@ class ChatsController < ApplicationController
     end
   end
   def crate_individual
-    @user = User.find_by(id: params[:id], is_deleted: false)
+    @user = User.kept.find_by(id: params[:id])
     @room = Room.new(name: "#{@user.name}&#{@current_user.name}", caption: "#{@user.name}さんと#{@current_user}さんでの個人チャット", is_group_chat: false)
     
     unless @room.save

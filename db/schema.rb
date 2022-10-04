@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_24_142136) do
+ActiveRecord::Schema.define(version: 2022_10_04_141930) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "project_id", null: false
     t.string "content", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_entries_on_discarded_at"
     t.index ["project_id"], name: "index_entries_on_project_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
@@ -26,7 +27,6 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_favorites_on_post_id"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
     t.string "content", null: false
     t.integer "room_id", null: false
     t.integer "user_id", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_messages_on_discarded_at"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -47,9 +48,10 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
   create_table "posts", force: :cascade do |t|
     t.string "content", null: false
     t.integer "user_id", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_posts_on_discarded_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -60,10 +62,11 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
     t.string "target", null: false
     t.text "detail", null: false
     t.boolean "is_published", default: false, null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image", null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_projects_on_discarded_at"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -88,9 +91,10 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
   create_table "room_users", force: :cascade do |t|
     t.integer "room_id", null: false
     t.integer "user_id", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_room_users_on_discarded_at"
     t.index ["room_id"], name: "index_room_users_on_room_id"
     t.index ["user_id"], name: "index_room_users_on_user_id"
   end
@@ -99,24 +103,27 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
     t.text "name", null: false
     t.text "caption", null: false
     t.boolean "is_group_chat", default: false, null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_rooms_on_discarded_at"
   end
 
   create_table "tag_categories", force: :cascade do |t|
     t.string "name", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_tag_categories_on_discarded_at"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.integer "tag_category_id", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_tags_on_discarded_at"
     t.index ["tag_category_id"], name: "index_tags_on_tag_category_id"
   end
 
@@ -125,10 +132,11 @@ ActiveRecord::Schema.define(version: 2022_09_24_142136) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "icon", default: "icon.png", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
   end
 
   add_foreign_key "entries", "projects"

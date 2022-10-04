@@ -5,7 +5,6 @@ one:
   name: Naoki
   email: naoki@mail.com
   password_digest: <%= BCrypt::Password.create('Naoki') %>
-  is_deleted: false
   admin: true
 
 two:
@@ -13,11 +12,9 @@ two:
   name: Tatsuya
   email: tatsuya@mail.com
   password_digest: <%= BCrypt::Password.create('Tatsuya') %>
-  is_deleted: false
 
 three:
   id: 3
   name: Masato
   email: masato@mail.com
   password_digest: <%= BCrypt::Password.create('Masato') %>
-  is_deleted: false

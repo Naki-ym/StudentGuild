@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+  include Discard::Model
+
   validates :name, {presence: true, length: {maximum: 30}}
   validates :caption, {presence: true}
 
